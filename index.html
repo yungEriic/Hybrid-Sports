@@ -47,7 +47,9 @@
 
   header {
     text-align: center;
-    padding: 40px 0 30px;
+    padding-top: max(56px, calc(env(safe-area-inset-top) + 20px));
+    padding-bottom: 30px;
+    padding-left: 0; padding-right: 0;
     border-bottom: 1px solid var(--border);
     margin-bottom: 30px;
   }
@@ -443,7 +445,7 @@
   }
 
   /* ── Top Nav ── */
-  body { padding-bottom: 0 !important; }
+  body { padding-bottom: 0 !important; padding-top: env(safe-area-inset-top); }
   #top-nav-wrap { position:fixed; bottom:0; left:0; right:0; z-index:300; background:rgba(7,7,16,.95); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-top:1px solid var(--border); border-bottom:none; padding-bottom:env(safe-area-inset-bottom); }
   #top-nav { display:flex; }
   .nav-btn {
@@ -459,7 +461,7 @@
   .page.active { display:block; }
   .card { background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:16px 18px; margin-bottom:12px; }
   .card-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
-  .page-hdr { padding:26px 20px 16px; background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%); }
+  .page-hdr { padding-top:max(44px, calc(env(safe-area-inset-top) + 16px)); padding-left:20px; padding-right:20px; padding-bottom:16px; background:linear-gradient(180deg,var(--surface) 0%,var(--bg) 100%); }
   .page-title { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:1px; }
   .page-sub { font-size:13px; color:var(--muted); margin-top:2px; }
   .page-body { padding:0 16px; }
