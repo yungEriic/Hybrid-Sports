@@ -8,8 +8,6 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Hybrid Athlet</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="apple-touch-icon" href="icon.png">
-
 <style>
 
   :root {
@@ -445,19 +443,19 @@
   }
 
   /* ── Top Nav ── */
-  body { padding-bottom: 24px !important; }
-  #top-nav-wrap { position:sticky; top:0; z-index:300; background:var(--bg); border-bottom:1px solid var(--border); }
+  body { padding-bottom: 0 !important; }
+  #top-nav-wrap { position:fixed; bottom:0; left:0; right:0; z-index:300; background:rgba(7,7,16,.95); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-top:1px solid var(--border); border-bottom:none; padding-bottom:env(safe-area-inset-bottom); }
   #top-nav { display:flex; }
   .nav-btn {
     flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap:4px; padding:11px 4px 9px; border:none; border-bottom:2px solid transparent;
+    gap:4px; padding:11px 4px 9px; border:none;
     background:transparent; color:var(--muted); cursor:pointer;
     font-family:'DM Sans',sans-serif; font-weight:600; font-size:10px;
     text-transform:uppercase; letter-spacing:.5px; transition:all .2s;
   }
   .nav-btn svg { width:20px; height:20px; }
-  .nav-btn.active { color:var(--accent); border-bottom-color:var(--accent); }
-  .page { display:none; min-height:100vh; padding-bottom:40px; }
+  .nav-btn.active { color:var(--accent); }
+  .page { display:none; min-height:100vh; padding-bottom:90px; }
   .page.active { display:block; }
   .card { background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:16px 18px; margin-bottom:12px; }
   .card-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
