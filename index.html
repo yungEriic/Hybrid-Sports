@@ -7,9 +7,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Hybrid Athlet</title>
+<link rel="apple-touch-icon" href="icon.png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-
 <style>
 
   :root {
@@ -562,6 +561,18 @@
   .hist-f-btn { padding:7px 14px; border-radius:999px; border:1.5px solid var(--border); background:none; color:var(--muted); font-size:12px; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all .2s; }
   .hist-f-btn.active { border-color:var(--accent); color:var(--accent); background:rgba(232,255,71,.08); }
 
+
+  /* Edit Exercises */
+  .ex-edit-item { background:var(--surface); border:0.5px solid var(--border); border-radius:16px; padding:14px 16px; margin-bottom:8px; display:flex; align-items:center; gap:12px; }
+  .ex-edit-info { flex:1; min-width:0; }
+  .ex-edit-name { font-size:15px; font-weight:700; margin-bottom:2px; }
+  .ex-edit-meta { font-size:12px; color:var(--text3); }
+  .ex-edit-btn { background:none; border:none; color:var(--text3); cursor:pointer; font-size:18px; padding:4px; }
+  .ex-del-btn  { background:none; border:none; color:rgba(255,69,58,.4); cursor:pointer; font-size:22px; padding:4px; }
+  .form-card { background:var(--surface); border:0.5px solid var(--border2); border-radius:18px; padding:18px; margin-bottom:12px; }
+  .muscle-chips { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+  .muscle-chip { padding:6px 12px; border-radius:999px; border:0.5px solid var(--border2); background:none; color:var(--text2); font-size:12px; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all .15s; }
+  .muscle-chip.sel { border-color:var(--accent); color:var(--accent); background:rgba(48,209,88,.1); }
 </style>
 </head>
 <body>
@@ -644,45 +655,45 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 130g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Gewicht eine Stufe zurück · gleiche Übungen</div></div><span class="session-time">14–15 Uhr</span></div>
-            <div class="session core"><span class="session-icon">🔥</span><div class="session-info"><div class="session-title">EMOM Core 15 Min.</div><div class="session-detail">Liegestütze, Plank, Bird Dog</div></div><span class="session-time">danach</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Leichter</div></div><span class="session-time">14–15 Uhr</span></div>
+            <div class="session core"><span class="session-icon">🔥</span><div class="session-info"><div class="session-title">EMOM Core 15 Min.</div><div class="session-detail">EMOM Core</div></div><span class="session-time">danach</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DI</div><div class="day-carb mid">Mid 160g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max – reduziert <span style="color:var(--nacht);font-size:10px">↓</span></div><div class="session-detail">4 × 1 Min. @ Z5 · 3 Min. Pause · weniger Intervalle</div></div><span class="session-time">14–15 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max – reduziert <span style="color:var(--nacht);font-size:10px">↓</span></div><div class="session-detail">VO2Max</div></div><span class="session-time">14–15 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 130g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 60 Min. ✅</div><div class="session-detail">108–126 bpm · unverändert</div></div><span class="session-time">14–15 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 60 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">14–15 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DO</div><div class="day-carb mid">Mid 170g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot – reduziert <span style="color:var(--nacht);font-size:10px">↓</span></div><div class="session-detail">2 × 12 Min. @ 88–93% FTP · statt 3 × 15</div></div><span class="session-time">14–15 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot – reduziert <span style="color:var(--nacht);font-size:10px">↓</span></div><div class="session-detail">Sweet Spot</div></div><span class="session-time">14–15 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">FR</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Aktive Erholung</div><div class="session-detail">Spazieren 30–60 Min. · Stretching</div></div><span class="session-time">flexibel</span></div>
+            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Z2 Grundlage</div><div class="session-detail">Aktive Erholung</div></div><span class="session-time">flexibel</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb mid">Mid 140g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Gewicht eine Stufe zurück · gleiche Übungen</div></div><span class="session-time">morgens</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 60 Min. ✅</div><div class="session-detail">Locker · unverändert</div></div><span class="session-time">nachmittags</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Leichter</div></div><span class="session-time">morgens</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 60 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SO</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Ruhetag</div><div class="session-detail">Spazieren ok · Keine Intensität</div></div><span class="session-time">–</span></div>
+            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Ruhetag</div><div class="session-detail">Aktive Erholung</div></div><span class="session-time">–</span></div>
           </div>
         </div>
       </div>
@@ -703,46 +714,46 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 130g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Bankdrücken, Rudern, Latzug, Pull Aparts</div></div><span class="session-time">9–10 Uhr</span></div>
-            <div class="session core"><span class="session-icon">🔥</span><div class="session-info"><div class="session-title">EMOM Core 15 Min.</div><div class="session-detail">Liegestütze, Plank, Bird Dog</div></div><span class="session-time">danach</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Oberkörper Kraft</div></div><span class="session-time">9–10 Uhr</span></div>
+            <div class="session core"><span class="session-icon">🔥</span><div class="session-info"><div class="session-title">EMOM Core 15 Min.</div><div class="session-detail">EMOM Core</div></div><span class="session-time">danach</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DI</div><div class="day-carb high">High 210g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max – Kickr Core</div><div class="session-detail">5–6 × 1 Min. @ Z5 · 3 Min. Pause</div></div><span class="session-time">9–10 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max – Kickr Core</div><div class="session-detail">VO2Max</div></div><span class="session-time">9–10 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 130g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 60 Min.</div><div class="session-detail">108–126 bpm</div></div><span class="session-time">9–10 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 20 Min.</div><div class="session-detail">Z2 Puls · locker</div></div><span class="session-time">11 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 60 Min.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">9–10 Uhr</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 20 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">11 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DO</div><div class="day-carb high">High 210g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot / Threshold</div><div class="session-detail">2–3 × 12–15 Min. @ 88–93% FTP</div></div><span class="session-time">9–10 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot / Threshold</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">9–10 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">FR</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Squat, Rudern, Schulter, Lunge, Core</div></div><span class="session-time">9–10 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">9–10 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb mid">Mid 150g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Kniebeugen, Bulgarian Split, RDL, Swings</div></div><span class="session-time">morgens</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor</div><div class="session-detail">60–90 Min. locker</div></div><span class="session-time">nachmittags</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Unterkörper Kraft</div></div><span class="session-time">morgens</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SO</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Ruhetag</div><div class="session-detail">Spazieren ok</div></div><span class="session-time">–</span></div>
+            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Ruhetag</div><div class="session-detail">Aktive Erholung</div></div><span class="session-time">–</span></div>
           </div>
         </div>
       </div>
@@ -761,45 +772,45 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 130g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Bankdrücken, Rudern, Latzug, Pull Aparts</div></div><span class="session-time">14–15 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Oberkörper Kraft</div></div><span class="session-time">14–15 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DI</div><div class="day-carb high">High 210g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max – Kickr Core</div><div class="session-detail">5–6 × 1 Min. @ Z5</div></div><span class="session-time">14–15 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max – Kickr Core</div><div class="session-detail">VO2Max</div></div><span class="session-time">14–15 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 130g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Squat, Rudern, Schulter, Lunge, Core</div></div><span class="session-time">14–15 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 20 Min.</div><div class="session-detail">Z2 locker</div></div><span class="session-time">16 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">14–15 Uhr</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 20 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">16 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DO</div><div class="day-carb high">High 210g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot / Threshold</div><div class="session-detail">2–3 × 12–15 Min. @ 88–93% FTP</div></div><span class="session-time">14–15 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot / Threshold</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">14–15 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">FR</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 60 Min.</div><div class="session-detail">Aktive Erholung</div></div><span class="session-time">14–15 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 60 Min.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">14–15 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb mid">Mid 150g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Kniebeugen, Bulgarian Split, RDL, Swings</div></div><span class="session-time">morgens</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 90 Min.+</div><div class="session-detail">Lange Grundlagenfahrt</div></div><span class="session-time">nachmittags</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Unterkörper Kraft</div></div><span class="session-time">morgens</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 90 Min.+</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SO</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Ruhetag</div><div class="session-detail">Erholen für neue Woche</div></div><span class="session-time">–</span></div>
+            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Ruhetag</div><div class="session-detail">Erholen</div></div><span class="session-time">–</span></div>
           </div>
         </div>
       </div>
@@ -840,45 +851,45 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 140g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Gewicht eine Stufe zurück · gleiche Übungen</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Leichter</div></div><span class="session-time">14 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DI</div><div class="day-carb mid">Mid 160g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max – reduziert <span style="color:var(--nacht);font-size:10px">↓</span></div><div class="session-detail">4–5 × 1 Min. @ Z5 · statt 6</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max – reduziert <span style="color:var(--nacht);font-size:10px">↓</span></div><div class="session-detail">VO2Max</div></div><span class="session-time">14 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 140g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 60–75 Min. ✅</div><div class="session-detail">Unverändert</div></div><span class="session-time">14 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 20 Min. <span style="color:var(--nacht);font-size:10px">↓ kürzer</span></div><div class="session-detail">Z2 locker · nur wenn Energie da</div></div><span class="session-time">16 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 60–75 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 20 Min. <span style="color:var(--nacht);font-size:10px">↓ kürzer</span></div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">16 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DO</div><div class="day-carb mid">Mid 170g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot – reduziert <span style="color:var(--nacht);font-size:10px">↓</span></div><div class="session-detail">2 × 12 Min. @ 88–93% FTP · statt 3 × 15</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot – reduziert <span style="color:var(--nacht);font-size:10px">↓</span></div><div class="session-detail">Sweet Spot</div></div><span class="session-time">14 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">FR</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Aktive Erholung</div><div class="session-detail">Spazieren · kein Laufen in Nachtschicht</div></div><span class="session-time">flexibel</span></div>
+            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Z2 Grundlage</div><div class="session-detail">Aktive Erholung</div></div><span class="session-time">flexibel</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb mid">Mid 160g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Gewicht eine Stufe zurück</div></div><span class="session-time">morgens</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 60–90 Min. ✅</div><div class="session-detail">Grundlagenfahrt · unverändert</div></div><span class="session-time">nachmittags</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Leichter</div></div><span class="session-time">morgens</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 60–90 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SO</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Ruhetag</div><div class="session-detail">Erholen · kein Ganzkörper in Nachtschicht</div></div><span class="session-time">–</span></div>
+            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Ruhetag</div><div class="session-detail">Erholen</div></div><span class="session-time">–</span></div>
           </div>
         </div>
       </div>
@@ -897,46 +908,46 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 150g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Progressiv schwerer</div></div><span class="session-time">9 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 25 Min.</div><div class="session-detail">Z2 locker</div></div><span class="session-time">11 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Progressiv</div></div><span class="session-time">9 Uhr</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 25 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">11 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DI</div><div class="day-carb high">High 210g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max</div><div class="session-detail">6 × 1 Min. @ Z5</div></div><span class="session-time">9 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max</div><div class="session-detail">VO2Max</div></div><span class="session-time">9 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 150g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 75 Min.</div><div class="session-detail">Länger als Phase 1</div></div><span class="session-time">9 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 75 Min.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">9 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DO</div><div class="day-carb high">High 210g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot</div><div class="session-detail">3 × 15 Min.</div></div><span class="session-time">9 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">9 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">FR</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Funktionell + Kraft</div></div><span class="session-time">9 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 locker</div></div><span class="session-time">11 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">9 Uhr</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">11 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb mid">Mid 170g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Schwerer als Phase 1</div></div><span class="session-time">morgens</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 90 Min.+</div><div class="session-detail">Lange Ausfahrt</div></div><span class="session-time">nachmittags</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Progressiv</div></div><span class="session-time">morgens</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 90 Min.+</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SO</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Ruhetag / Spazieren</div><div class="session-detail">Vorbereitung neue Woche</div></div><span class="session-time">–</span></div>
+            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Ruhetag / Spazieren</div><div class="session-detail">Erholen</div></div><span class="session-time">–</span></div>
           </div>
         </div>
       </div>
@@ -953,39 +964,39 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 150g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Nach Schicht 14 Uhr</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail"></div></div><span class="session-time">14 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DI</div><div class="day-carb high">High 210g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max</div><div class="session-detail">6 × 1 Min. @ Z5</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max</div><div class="session-detail">VO2Max</div></div><span class="session-time">14 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 150g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Funktionell + Kraft</div></div><span class="session-time">14 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 25 Min.</div><div class="session-detail">Z2 locker</div></div><span class="session-time">16 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 25 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">16 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DO</div><div class="day-carb high">High 210g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot</div><div class="session-detail">3 × 15 Min.</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">14 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">FR</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 locker</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">14 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb mid">Mid 170g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Schwerer als Phase 1</div></div><span class="session-time">morgens</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 90 Min.+</div><div class="session-detail">Lange Ausfahrt</div></div><span class="session-time">nachmittags</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Progressiv</div></div><span class="session-time">morgens</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 90 Min.+</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span></div>
           </div>
         </div>
         <div class="day-row">
@@ -1031,45 +1042,45 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 150g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Gewicht eine Stufe zurück · gleiche Übungen</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Leichter</div></div><span class="session-time">14 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DI</div><div class="day-carb mid">Mid 170g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max – reduziert <span style="color:var(--nacht);font-size:10px">↓</span></div><div class="session-detail">4–5 × 1 Min. @ Z5 · statt 6–8</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max – reduziert <span style="color:var(--nacht);font-size:10px">↓</span></div><div class="session-detail">VO2Max</div></div><span class="session-time">14 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 150g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 75 Min. ✅</div><div class="session-detail">Unverändert · Fettverbrennung</div></div><span class="session-time">14 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 20–25 Min. <span style="color:var(--nacht);font-size:10px">↓ kürzer</span></div><div class="session-detail">Z2 locker · nur wenn Energie da</div></div><span class="session-time">16 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 75 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 20–25 Min. <span style="color:var(--nacht);font-size:10px">↓ kürzer</span></div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">16 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DO</div><div class="day-carb mid">Mid 170g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot – reduziert <span style="color:var(--nacht);font-size:10px">↓</span></div><div class="session-detail">2 × 12 Min. @ 88–93% FTP · statt 3 × 15–20</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot – reduziert <span style="color:var(--nacht);font-size:10px">↓</span></div><div class="session-detail">Sweet Spot</div></div><span class="session-time">14 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">FR</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Aktive Erholung</div><div class="session-detail">Spazieren · kein Laufen in Nachtschicht</div></div><span class="session-time">flexibel</span></div>
+            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Z2 Grundlage</div><div class="session-detail">Aktive Erholung</div></div><span class="session-time">flexibel</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb mid">Mid 170g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Gewicht eine Stufe zurück</div></div><span class="session-time">morgens</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 90 Min. ✅</div><div class="session-detail">Grundlagenfahrt · unverändert</div></div><span class="session-time">nachmittags</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Leichter</div></div><span class="session-time">morgens</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 90 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SO</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Ruhetag</div><div class="session-detail">Kein Ganzkörper Gym · erholen</div></div><span class="session-time">–</span></div>
+            <div class="session ruhe"><span class="session-icon">😴</span><div class="session-info"><div class="session-title">Ruhetag</div><div class="session-detail">Erholen</div></div><span class="session-time">–</span></div>
           </div>
         </div>
       </div>
@@ -1088,46 +1099,46 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 160g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Maximum Progression</div></div><span class="session-time">9 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 locker</div></div><span class="session-time">11 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Progressiv</div></div><span class="session-time">9 Uhr</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">11 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DI</div><div class="day-carb high">High 220g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max</div><div class="session-detail">6–8 × 1 Min. @ Z5</div></div><span class="session-time">9 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max</div><div class="session-detail">VO2Max</div></div><span class="session-time">9 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 160g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Funktionell + Kraft</div></div><span class="session-time">9 Uhr</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 75 Min.</div><div class="session-detail">Nach Gym, locker</div></div><span class="session-time">11 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">9 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 75 Min.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">11 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DO</div><div class="day-carb high">High 220g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot</div><div class="session-detail">3 × 15–20 Min.</div></div><span class="session-time">9 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">9 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">FR</div><div class="day-carb mid">Mid 140g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Frisch – beste Beineinheit</div></div><span class="session-time">9 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 nach Kraft – locker</div></div><span class="session-time">11:30 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Unterkörper Kraft</div></div><span class="session-time">9 Uhr</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">11:30 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb high">High 200g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 2–3 Std.</div><div class="session-detail">Lange Grundlagenfahrt</div></div><span class="session-time">morgens</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 2–3 Std.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">morgens</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SO</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 35–40 Min.</div><div class="session-detail">Dritte Laufeinheit</div></div><span class="session-time">morgens</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 35–40 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">morgens</span></div>
           </div>
         </div>
       </div>
@@ -1145,45 +1156,45 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 160g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Nach Schicht</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail"></div></div><span class="session-time">14 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DI</div><div class="day-carb high">High 220g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max</div><div class="session-detail">6–8 × 1 Min. @ Z5</div></div><span class="session-time">14 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 locker</div></div><span class="session-time">16:30 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max</div><div class="session-detail">VO2Max</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">16:30 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 160g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Funktionell</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">14 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DO</div><div class="day-carb high">High 220g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot</div><div class="session-detail">3 × 15–20 Min.</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">14 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">FR</div><div class="day-carb low">Low 110g</div></div>
           <div class="sessions">
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 locker</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">14 Uhr</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb high">High 200g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Maximum Progression</div></div><span class="session-time">morgens</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 2 Std.</div><div class="session-detail">Lange Ausfahrt</div></div><span class="session-time">nachmittags</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Progressiv</div></div><span class="session-time">morgens</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 2 Std.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SO</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 35 Min.</div><div class="session-detail">Dritte Laufeinheit</div></div><span class="session-time">morgens</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 35 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">morgens</span></div>
           </div>
         </div>
       </div>
@@ -1272,7 +1283,10 @@ function setShift(shift, phase) {
   <div class="page-hdr">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
       <div class="page-title">WORKOUT</div>
-      <button id="cancel-btn" onclick="cancelWorkout()" style="display:none;background:rgba(255,71,87,.15);border:1px solid rgba(255,71,87,.4);color:#ff4757;border-radius:8px;padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif">Abbrechen</button>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button id="edit-ex-btn" onclick="showPage('editex')" style="background:none;border:0.5px solid var(--border2);color:var(--text2);border-radius:9px;padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif">Übungen ✎</button>
+        <button id="cancel-btn" onclick="cancelWorkout()" style="display:none;background:rgba(255,71,87,.15);border:1px solid rgba(255,71,87,.4);color:#ff4757;border-radius:8px;padding:5px 12px;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif">Abbrechen</button>
+      </div>
     </div>
     <div style="display:flex;justify-content:space-between;align-items:center">
       <div class="page-sub" id="wk-sub">Wähle ein Workout</div>
@@ -1381,85 +1395,85 @@ function setShift(shift, phase) {
 <script>
 const WEEK_PLANS = {
   '1-fruh': [
-    { day:'MO', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Bankdrücken, Rudern, Latzug, Pull Aparts',time:'14-15 Uhr'}]},
-    { day:'DI', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'VO2Max Kickr Core',detail:'5-6 x 1 Min. @ Z5',time:'14-15 Uhr'}]},
-    { day:'MI', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'gym',icon:'🏋️',title:'Ganzkörper Mix',detail:'Squat, Rudern, Schulter, Lunge, Core',time:'14-15 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen 20 Min.',detail:'Z2 locker',time:'16 Uhr'}]},
-    { day:'DO', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot Threshold',detail:'2-3 x 12-15 Min. @ 88-93% FTP',time:'14-15 Uhr'}]},
-    { day:'FR', carb:'low', carbLbl:'Low 100g', sessions:[{type:'rad',icon:'🚴',title:'Z2 60 Min.',detail:'Aktive Erholung',time:'14-15 Uhr'}]},
-    { day:'SA', carb:'mid', carbLbl:'Mid 150g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper',detail:'Kniebeugen, Bulgarian Split, RDL, Swings',time:'morgens'},{type:'rad',icon:'🚴',title:'Z2 Outdoor 90 Min.+',detail:'Lange Grundlagenfahrt',time:'nachmittags'}]},
-    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Ruhetag',detail:'Erholen fuer neue Woche',time:'-'}]},
+    { day:'MO', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Gym',time:'14-15 Uhr'}]},
+    { day:'DI', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'VO2Max',detail:'Rad',time:'14-15 Uhr'}]},
+    { day:'MI', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'gym',icon:'🏋️',title:'Ganzkörper',detail:'Gym',time:'14-15 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen Z2',detail:'Laufen',time:'16 Uhr'}]},
+    { day:'DO', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot',detail:'Rad',time:'14-15 Uhr'}]},
+    { day:'FR', carb:'low', carbLbl:'Low 100g', sessions:[{type:'rad',icon:'🚴',title:'Z2 Grundlage',detail:'Rad',time:'14-15 Uhr'}]},
+    { day:'SA', carb:'mid', carbLbl:'Mid 150g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper',detail:'Gym',time:'morgens'},{type:'rad',icon:'🚴',title:'Z2 Outdoor',detail:'Rad',time:'nachmittags'}]},
+    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Ruhetag',detail:'',time:''}]},
   ],
   '1-spat': [
-    { day:'MO', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Bankdrücken, Rudern, Latzug, Pull Aparts',time:'9-10 Uhr'},{type:'core',icon:'🔥',title:'EMOM Core 15 Min.',detail:'Liegestütze, Plank, Bird Dog',time:'danach'}]},
-    { day:'DI', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'VO2Max Kickr Core',detail:'5-6 x 1 Min. @ Z5, 3 Min. Pause',time:'9-10 Uhr'}]},
-    { day:'MI', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'rad',icon:'🚴',title:'Z2 60 Min.',detail:'108-126 bpm',time:'9-10 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen 20 Min.',detail:'Z2 Puls locker',time:'11 Uhr'}]},
-    { day:'DO', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot Threshold',detail:'2-3 x 12-15 Min. @ 88-93% FTP',time:'9-10 Uhr'}]},
-    { day:'FR', carb:'low', carbLbl:'Low 100g', sessions:[{type:'gym',icon:'🏋️',title:'Ganzkörper Mix',detail:'Squat, Rudern, Schulter, Lunge, Core',time:'9-10 Uhr'}]},
-    { day:'SA', carb:'mid', carbLbl:'Mid 150g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper',detail:'Kniebeugen, Bulgarian Split, RDL, Swings',time:'morgens'},{type:'rad',icon:'🚴',title:'Z2 Outdoor',detail:'60-90 Min. locker',time:'nachmittags'}]},
-    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Ruhetag',detail:'Spazieren ok',time:'-'}]},
+    { day:'MO', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Gym',time:'9-10 Uhr'},{type:'core',icon:'🔥',title:'EMOM Core',detail:'Core',time:'danach'}]},
+    { day:'DI', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'VO2Max',detail:'Rad',time:'9-10 Uhr'}]},
+    { day:'MI', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'rad',icon:'🚴',title:'Z2 Grundlage',detail:'Rad',time:'9-10 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen Z2',detail:'Laufen',time:'11 Uhr'}]},
+    { day:'DO', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot',detail:'Rad',time:'9-10 Uhr'}]},
+    { day:'FR', carb:'low', carbLbl:'Low 100g', sessions:[{type:'gym',icon:'🏋️',title:'Ganzkörper',detail:'Gym',time:'9-10 Uhr'}]},
+    { day:'SA', carb:'mid', carbLbl:'Mid 150g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper',detail:'Gym',time:'morgens'},{type:'rad',icon:'🚴',title:'Z2 Outdoor',detail:'Rad',time:'nachmittags'}]},
+    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Ruhetag',detail:'',time:''}]},
   ],
   '1-nacht': [
-    { day:'MO', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper leichter',detail:'Gewicht eine Stufe zuruck, gleiche Uebungen',time:'14-15 Uhr'},{type:'core',icon:'🔥',title:'EMOM Core 15 Min.',detail:'Liegestütze, Plank, Bird Dog',time:'danach'}]},
-    { day:'DI', carb:'mid', carbLbl:'Mid 160g', sessions:[{type:'rad',icon:'🚴',title:'VO2Max reduziert',detail:'4 x 1 Min. @ Z5, 3 Min. Pause',time:'14-15 Uhr'}]},
-    { day:'MI', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'rad',icon:'🚴',title:'Z2 60 Min.',detail:'108-126 bpm unverändert',time:'14-15 Uhr'}]},
-    { day:'DO', carb:'mid', carbLbl:'Mid 170g', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot reduziert',detail:'2 x 12 Min. @ 88-93% FTP, statt 3 x 15',time:'14-15 Uhr'}]},
-    { day:'FR', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Aktive Erholung',detail:'Spazieren 30-60 Min. Stretching',time:'flexibel'}]},
-    { day:'SA', carb:'mid', carbLbl:'Mid 140g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper leichter',detail:'Gewicht eine Stufe zuruck',time:'morgens'},{type:'rad',icon:'🚴',title:'Z2 Outdoor 60 Min.',detail:'Locker unverändert',time:'nachmittags'}]},
-    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Ruhetag',detail:'Keine Intensität',time:'-'}]},
+    { day:'MO', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Gym',time:'14-15 Uhr'},{type:'core',icon:'🔥',title:'EMOM Core',detail:'Core',time:'danach'}]},
+    { day:'DI', carb:'mid', carbLbl:'Mid 160g', sessions:[{type:'rad',icon:'🚴',title:'VO2Max',detail:'Rad',time:'14-15 Uhr'}]},
+    { day:'MI', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'rad',icon:'🚴',title:'Z2 Grundlage',detail:'Rad',time:'14-15 Uhr'}]},
+    { day:'DO', carb:'mid', carbLbl:'Mid 170g', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot',detail:'Rad',time:'14-15 Uhr'}]},
+    { day:'FR', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Z2 Grundlage',detail:'',time:''}]},
+    { day:'SA', carb:'mid', carbLbl:'Mid 140g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper',detail:'Gym',time:'morgens'},{type:'rad',icon:'🚴',title:'Z2 Outdoor',detail:'Rad',time:'nachmittags'}]},
+    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Ruhetag',detail:'',time:''}]},
   ],
   '2-fruh': [
-    { day:'MO', carb:'mid', carbLbl:'Mid 150g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Nach Schicht 14 Uhr',time:'14 Uhr'}]},
-    { day:'DI', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'VO2Max',detail:'6 x 1 Min. @ Z5',time:'14 Uhr'}]},
-    { day:'MI', carb:'mid', carbLbl:'Mid 150g', sessions:[{type:'gym',icon:'🏋️',title:'Ganzkörper Mix',detail:'Funktionell + Kraft',time:'14 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen 25 Min.',detail:'Z2 locker',time:'16 Uhr'}]},
-    { day:'DO', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot',detail:'3 x 15 Min.',time:'14 Uhr'}]},
-    { day:'FR', carb:'low', carbLbl:'Low 100g', sessions:[{type:'lauf',icon:'🏃',title:'Laufen 30 Min.',detail:'Z2 locker',time:'14 Uhr'}]},
-    { day:'SA', carb:'mid', carbLbl:'Mid 170g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper',detail:'Schwerer als Phase 1',time:'morgens'},{type:'rad',icon:'🚴',title:'Z2 Outdoor 90 Min.+',detail:'Lange Ausfahrt',time:'nachmittags'}]},
-    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Ruhetag',detail:'Erholen',time:'-'}]},
+    { day:'MO', carb:'mid', carbLbl:'Mid 150g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Gym',time:'14 Uhr'}]},
+    { day:'DI', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'VO2Max',detail:'Rad',time:'14 Uhr'}]},
+    { day:'MI', carb:'mid', carbLbl:'Mid 150g', sessions:[{type:'gym',icon:'🏋️',title:'Ganzkörper',detail:'Gym',time:'14 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen Z2',detail:'Laufen',time:'16 Uhr'}]},
+    { day:'DO', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot',detail:'Rad',time:'14 Uhr'}]},
+    { day:'FR', carb:'low', carbLbl:'Low 100g', sessions:[{type:'lauf',icon:'🏃',title:'Laufen Z2',detail:'Laufen',time:'14 Uhr'}]},
+    { day:'SA', carb:'mid', carbLbl:'Mid 170g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper',detail:'Gym',time:'morgens'},{type:'rad',icon:'🚴',title:'Z2 Outdoor',detail:'Rad',time:'nachmittags'}]},
+    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Ruhetag',detail:'',time:''}]},
   ],
   '2-spat': [
-    { day:'MO', carb:'mid', carbLbl:'Mid 150g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Progressiv schwerer',time:'9 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen 25 Min.',detail:'Z2 locker',time:'11 Uhr'}]},
-    { day:'DI', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'VO2Max',detail:'6 x 1 Min. @ Z5',time:'9 Uhr'}]},
-    { day:'MI', carb:'mid', carbLbl:'Mid 150g', sessions:[{type:'rad',icon:'🚴',title:'Z2 75 Min.',detail:'Länger als Phase 1',time:'9 Uhr'}]},
-    { day:'DO', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot',detail:'3 x 15 Min.',time:'9 Uhr'}]},
-    { day:'FR', carb:'low', carbLbl:'Low 100g', sessions:[{type:'gym',icon:'🏋️',title:'Ganzkörper Mix',detail:'Funktionell + Kraft',time:'9 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen 30 Min.',detail:'Z2 locker',time:'11 Uhr'}]},
-    { day:'SA', carb:'mid', carbLbl:'Mid 170g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper',detail:'Schwerer als Phase 1',time:'morgens'},{type:'rad',icon:'🚴',title:'Z2 Outdoor 90 Min.+',detail:'Lange Ausfahrt',time:'nachmittags'}]},
-    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Ruhetag',detail:'Vorbereitung neue Woche',time:'-'}]},
+    { day:'MO', carb:'mid', carbLbl:'Mid 150g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Gym',time:'9 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen Z2',detail:'Laufen',time:'11 Uhr'}]},
+    { day:'DI', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'VO2Max',detail:'Rad',time:'9 Uhr'}]},
+    { day:'MI', carb:'mid', carbLbl:'Mid 150g', sessions:[{type:'rad',icon:'🚴',title:'Z2 Grundlage',detail:'Rad',time:'9 Uhr'}]},
+    { day:'DO', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot',detail:'Rad',time:'9 Uhr'}]},
+    { day:'FR', carb:'low', carbLbl:'Low 100g', sessions:[{type:'gym',icon:'🏋️',title:'Ganzkörper',detail:'Gym',time:'9 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen Z2',detail:'Laufen',time:'11 Uhr'}]},
+    { day:'SA', carb:'mid', carbLbl:'Mid 170g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper',detail:'Gym',time:'morgens'},{type:'rad',icon:'🚴',title:'Z2 Outdoor',detail:'Rad',time:'nachmittags'}]},
+    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Ruhetag',detail:'',time:''}]},
   ],
   '2-nacht': [
-    { day:'MO', carb:'mid', carbLbl:'Mid 140g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper leichter',detail:'Gewicht eine Stufe zuruck',time:'14 Uhr'}]},
-    { day:'DI', carb:'mid', carbLbl:'Mid 160g', sessions:[{type:'rad',icon:'🚴',title:'VO2Max reduziert',detail:'4-5 x 1 Min. @ Z5, statt 6',time:'14 Uhr'}]},
-    { day:'MI', carb:'mid', carbLbl:'Mid 140g', sessions:[{type:'rad',icon:'🚴',title:'Z2 60-75 Min.',detail:'Unverändert',time:'14 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen 20 Min. kürzer',detail:'Z2 locker, nur wenn Energie da',time:'16 Uhr'}]},
-    { day:'DO', carb:'mid', carbLbl:'Mid 170g', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot reduziert',detail:'2 x 12 Min. @ 88-93% FTP, statt 3 x 15',time:'14 Uhr'}]},
-    { day:'FR', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Aktive Erholung',detail:'Spazieren, kein Laufen in Nachtschicht',time:'flexibel'}]},
-    { day:'SA', carb:'mid', carbLbl:'Mid 160g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper leichter',detail:'Gewicht eine Stufe zuruck',time:'morgens'},{type:'rad',icon:'🚴',title:'Z2 Outdoor 60-90 Min.',detail:'Grundlagenfahrt unverändert',time:'nachmittags'}]},
-    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Ruhetag',detail:'Kein Ganzkörper in Nachtschicht',time:'-'}]},
+    { day:'MO', carb:'mid', carbLbl:'Mid 140g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Gym',time:'14 Uhr'}]},
+    { day:'DI', carb:'mid', carbLbl:'Mid 160g', sessions:[{type:'rad',icon:'🚴',title:'VO2Max',detail:'Rad',time:'14 Uhr'}]},
+    { day:'MI', carb:'mid', carbLbl:'Mid 140g', sessions:[{type:'rad',icon:'🚴',title:'Z2 Grundlage',detail:'Rad',time:'14 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen Z2',detail:'Laufen',time:'16 Uhr'}]},
+    { day:'DO', carb:'mid', carbLbl:'Mid 170g', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot',detail:'Rad',time:'14 Uhr'}]},
+    { day:'FR', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Z2 Grundlage',detail:'',time:''}]},
+    { day:'SA', carb:'mid', carbLbl:'Mid 160g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper',detail:'Gym',time:'morgens'},{type:'rad',icon:'🚴',title:'Z2 Outdoor',detail:'Rad',time:'nachmittags'}]},
+    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Ruhetag',detail:'',time:''}]},
   ],
   '3-fruh': [
-    { day:'MO', carb:'mid', carbLbl:'Mid 160g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Nach Schicht',time:'14 Uhr'}]},
-    { day:'DI', carb:'high', carbLbl:'High 220g+', sessions:[{type:'rad',icon:'🚴',title:'VO2Max',detail:'6-8 x 1 Min. @ Z5',time:'14 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen 30 Min.',detail:'Z2 locker',time:'16:30 Uhr'}]},
-    { day:'MI', carb:'mid', carbLbl:'Mid 160g', sessions:[{type:'gym',icon:'🏋️',title:'Ganzkörper Mix',detail:'Funktionell',time:'14 Uhr'}]},
-    { day:'DO', carb:'high', carbLbl:'High 220g+', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot',detail:'3 x 15-20 Min.',time:'14 Uhr'}]},
-    { day:'FR', carb:'low', carbLbl:'Low 110g', sessions:[{type:'lauf',icon:'🏃',title:'Laufen 30 Min.',detail:'Z2 locker',time:'14 Uhr'}]},
-    { day:'SA', carb:'high', carbLbl:'High 200g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper',detail:'Maximum Progression',time:'morgens'},{type:'rad',icon:'🚴',title:'Z2 Outdoor 2 Std.',detail:'Lange Ausfahrt',time:'nachmittags'}]},
-    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'lauf',icon:'🏃',title:'Laufen 35 Min.',detail:'Dritte Laufeinheit',time:'morgens'}]},
+    { day:'MO', carb:'mid', carbLbl:'Mid 160g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Gym',time:'14 Uhr'}]},
+    { day:'DI', carb:'high', carbLbl:'High 220g+', sessions:[{type:'rad',icon:'🚴',title:'VO2Max',detail:'Rad',time:'14 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen Z2',detail:'Laufen',time:'16:30 Uhr'}]},
+    { day:'MI', carb:'mid', carbLbl:'Mid 160g', sessions:[{type:'gym',icon:'🏋️',title:'Ganzkörper',detail:'Gym',time:'14 Uhr'}]},
+    { day:'DO', carb:'high', carbLbl:'High 220g+', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot',detail:'Rad',time:'14 Uhr'}]},
+    { day:'FR', carb:'low', carbLbl:'Low 110g', sessions:[{type:'lauf',icon:'🏃',title:'Laufen Z2',detail:'Laufen',time:'14 Uhr'}]},
+    { day:'SA', carb:'high', carbLbl:'High 200g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper',detail:'Gym',time:'morgens'},{type:'rad',icon:'🚴',title:'Z2 Outdoor',detail:'Rad',time:'nachmittags'}]},
+    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'lauf',icon:'🏃',title:'Laufen Z2',detail:'Laufen',time:'morgens'}]},
   ],
   '3-spat': [
-    { day:'MO', carb:'mid', carbLbl:'Mid 160g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Maximum Progression',time:'9 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen 30 Min.',detail:'Z2 locker',time:'11 Uhr'}]},
-    { day:'DI', carb:'high', carbLbl:'High 220g+', sessions:[{type:'rad',icon:'🚴',title:'VO2Max',detail:'6-8 x 1 Min. @ Z5',time:'9 Uhr'}]},
-    { day:'MI', carb:'mid', carbLbl:'Mid 160g', sessions:[{type:'gym',icon:'🏋️',title:'Ganzkörper Mix',detail:'Funktionell + Kraft',time:'9 Uhr'},{type:'rad',icon:'🚴',title:'Z2 75 Min.',detail:'Nach Gym, locker',time:'11 Uhr'}]},
-    { day:'DO', carb:'high', carbLbl:'High 220g+', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot',detail:'3 x 15-20 Min.',time:'9 Uhr'}]},
-    { day:'FR', carb:'mid', carbLbl:'Mid 140g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper',detail:'Frisch, beste Beineinheit',time:'9 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen 30 Min.',detail:'Z2 nach Kraft, locker',time:'11:30 Uhr'}]},
-    { day:'SA', carb:'high', carbLbl:'High 200g', sessions:[{type:'rad',icon:'🚴',title:'Z2 Outdoor 2-3 Std.',detail:'Lange Grundlagenfahrt',time:'morgens'}]},
-    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'lauf',icon:'🏃',title:'Laufen 35-40 Min.',detail:'Dritte Laufeinheit',time:'morgens'}]},
+    { day:'MO', carb:'mid', carbLbl:'Mid 160g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Gym',time:'9 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen Z2',detail:'Laufen',time:'11 Uhr'}]},
+    { day:'DI', carb:'high', carbLbl:'High 220g+', sessions:[{type:'rad',icon:'🚴',title:'VO2Max',detail:'Rad',time:'9 Uhr'}]},
+    { day:'MI', carb:'mid', carbLbl:'Mid 160g', sessions:[{type:'gym',icon:'🏋️',title:'Ganzkörper',detail:'Gym',time:'9 Uhr'},{type:'rad',icon:'🚴',title:'Z2 Grundlage',detail:'Rad',time:'11 Uhr'}]},
+    { day:'DO', carb:'high', carbLbl:'High 220g+', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot',detail:'Rad',time:'9 Uhr'}]},
+    { day:'FR', carb:'mid', carbLbl:'Mid 140g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper',detail:'Gym',time:'9 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen Z2',detail:'Laufen',time:'11:30 Uhr'}]},
+    { day:'SA', carb:'high', carbLbl:'High 200g', sessions:[{type:'rad',icon:'🚴',title:'Z2 Outdoor',detail:'Rad',time:'morgens'}]},
+    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'lauf',icon:'🏃',title:'Laufen Z2',detail:'Laufen',time:'morgens'}]},
   ],
   '3-nacht': [
-    { day:'MO', carb:'mid', carbLbl:'Mid 150g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper leichter',detail:'Gewicht eine Stufe zuruck',time:'14 Uhr'}]},
-    { day:'DI', carb:'mid', carbLbl:'Mid 170g', sessions:[{type:'rad',icon:'🚴',title:'VO2Max reduziert',detail:'4-5 x 1 Min. @ Z5, statt 6-8',time:'14 Uhr'}]},
-    { day:'MI', carb:'mid', carbLbl:'Mid 150g', sessions:[{type:'rad',icon:'🚴',title:'Z2 75 Min.',detail:'Unverändert, Fettverbrennung',time:'14 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen 20-25 Min. kürzer',detail:'Z2 locker, nur wenn Energie da',time:'16 Uhr'}]},
-    { day:'DO', carb:'mid', carbLbl:'Mid 170g', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot reduziert',detail:'2 x 12 Min. @ 88-93% FTP, statt 3 x 15-20',time:'14 Uhr'}]},
-    { day:'FR', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Aktive Erholung',detail:'Spazieren, kein Laufen in Nachtschicht',time:'flexibel'}]},
-    { day:'SA', carb:'mid', carbLbl:'Mid 170g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper leichter',detail:'Gewicht eine Stufe zuruck',time:'morgens'},{type:'rad',icon:'🚴',title:'Z2 Outdoor 90 Min.',detail:'Grundlagenfahrt unverändert',time:'nachmittags'}]},
-    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Ruhetag',detail:'Kein Ganzkörper Gym, erholen',time:'-'}]},
+    { day:'MO', carb:'mid', carbLbl:'Mid 150g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Gym',time:'14 Uhr'}]},
+    { day:'DI', carb:'mid', carbLbl:'Mid 170g', sessions:[{type:'rad',icon:'🚴',title:'VO2Max',detail:'Rad',time:'14 Uhr'}]},
+    { day:'MI', carb:'mid', carbLbl:'Mid 150g', sessions:[{type:'rad',icon:'🚴',title:'Z2 Grundlage',detail:'Rad',time:'14 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen Z2',detail:'Laufen',time:'16 Uhr'}]},
+    { day:'DO', carb:'mid', carbLbl:'Mid 170g', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot',detail:'Rad',time:'14 Uhr'}]},
+    { day:'FR', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Z2 Grundlage',detail:'',time:''}]},
+    { day:'SA', carb:'mid', carbLbl:'Mid 170g', sessions:[{type:'gym',icon:'🏋️',title:'Unterkörper',detail:'Gym',time:'morgens'},{type:'rad',icon:'🚴',title:'Z2 Outdoor',detail:'Rad',time:'nachmittags'}]},
+    { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Ruhetag',detail:'',time:''}]},
   ],
 };
 
@@ -1481,12 +1495,14 @@ function showPage(id) {
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
   document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active');});
   document.getElementById('page-'+id).classList.add('active');
-  document.getElementById('nav-'+id).classList.add('active');
+  var navEl = document.getElementById('nav-'+id); if(navEl) navEl.classList.add('active');
+  LS.set('last_page', id);
   window.scrollTo(0,0);
   if (id==='week')    renderWeek();
   if (id==='weight')  renderWeight();
   if (id==='workout') renderWkSelector();
   if (id==='history') renderHistory();
+  if (id==='editex') renderEditList();
 }
 
 function showToast(msg) {
@@ -1539,7 +1555,7 @@ function renderWeek() {
             +'<div class="ws-icon">'+s.icon+'</div>'
             +'<div class="ws-info">'
             +'<div class="ws-title" style="text-decoration:'+(isDone?'line-through':'none')+'">'+s.title+'</div>'
-            +'<div class="ws-detail">'+s.detail+(s.time&&s.time!=='-'?' - '+s.time:'')+'</div>'
+            +(s.detail||s.time?'<div class="ws-detail">'+(s.detail?s.detail:'')+(s.time&&s.time!=='-'&&s.time?' · '+s.time:'')+'</div>':'')
             +'</div>'
             +'<button class="ws-check'+(isDone?' done':'')+'" data-day="'+day.day+'" data-title="'+s.title.replace(/"/g,'&quot;')+'" onclick="handleToggleSession(this)">'+(isDone?'✓':'')+'</button>'
             +'</div>';
@@ -1575,7 +1591,7 @@ function resetWeek() {
 }
 
 // ── Workout ───────────────────────────────────────────────────────────────
-var WORKOUTS = {
+var WORKOUT_DEFAULTS = {
   'Oberkörper': [
     {name:'Bankdrücken',           sets:3,reps:'10',muscle:'Brust',      color:'#ff6b6b'},
     {name:'Schrägbankdrücken',     sets:3,reps:'10',muscle:'Brust',      color:'#ff6b6b'},
@@ -1584,34 +1600,55 @@ var WORKOUTS = {
     {name:'Pull Aparts',           sets:3,reps:'10',muscle:'Schulter',   color:'#ffa502'},
   ],
   'Unterkörper': [
-    {name:'Frontkniebeugen',       sets:3,reps:'10',muscle:'Quadrizeps', color:'#5352ed'},
-    {name:'Bulgarian Split Squats',sets:3,reps:'10',muscle:'Quadrizeps', color:'#5352ed'},
-    {name:'Rumänisches Kreuzheben',sets:3,reps:'10',muscle:'Hamstrings', color:'#7bed9f'},
-    {name:'Russian Swings',        sets:3,reps:'20',muscle:'Hamstrings', color:'#7bed9f'},
+    {name:'Frontkniebeugen',        sets:3,reps:'10',muscle:'Quadrizeps',color:'#5352ed'},
+    {name:'Bulgarian Split Squats', sets:3,reps:'10',muscle:'Quadrizeps',color:'#5352ed'},
+    {name:'Rumänisches Kreuzheben', sets:3,reps:'10',muscle:'Hamstrings',color:'#7bed9f'},
+    {name:'Russian Swings',         sets:3,reps:'20',muscle:'Hamstrings',color:'#7bed9f'},
   ],
   'Ganzkörper': [
-    {name:'Goblet Squat',          sets:3,reps:'10',muscle:'Quadrizeps', color:'#5352ed'},
-    {name:'Einarmiges Rudern',     sets:3,reps:'10',muscle:'Rücken',     color:'#2ed573'},
-    {name:'Schulterdrücken',       sets:3,reps:'10',muscle:'Schulter',   color:'#ffa502'},
-    {name:'Ausfallschritte',       sets:3,reps:'10',muscle:'Quadrizeps', color:'#5352ed'},
-    {name:'Liegestütze',           sets:3,reps:'12',muscle:'Brust',      color:'#ff6b6b'},
-    {name:'Dead Bug',              sets:3,reps:'10',muscle:'Core',       color:'#47b8ff'},
+    {name:'Goblet Squat',       sets:3,reps:'10',muscle:'Quadrizeps',color:'#5352ed'},
+    {name:'Einarmiges Rudern',  sets:3,reps:'10',muscle:'Rücken',    color:'#2ed573'},
+    {name:'Schulterdrücken',    sets:3,reps:'10',muscle:'Schulter',  color:'#ffa502'},
+    {name:'Ausfallschritte',    sets:3,reps:'10',muscle:'Quadrizeps',color:'#5352ed'},
+    {name:'Liegestütze',        sets:3,reps:'12',muscle:'Brust',     color:'#ff6b6b'},
+    {name:'Dead Bug',           sets:3,reps:'10',muscle:'Core',      color:'#47b8ff'},
   ],
 };
+
+var MUSCLE_COLORS = {
+  'Brust':'#ff6b6b','Rücken':'#2ed573','Schulter':'#ffa502',
+  'Quadrizeps':'#5352ed','Hamstrings':'#7bed9f','Core':'#47b8ff',
+  'Bizeps':'#ff6b6b','Trizeps':'#ffa502'
+};
+
+function getWorkouts() {
+  var result = {};
+  Object.keys(WORKOUT_DEFAULTS).forEach(function(wk) {
+    var saved = LS.get('custom_ex_' + wk, null);
+    if (saved) {
+      result[wk] = saved.map(function(ex) {
+        return { name:ex.name, sets:ex.sets, reps:ex.reps, muscle:ex.muscle, color:MUSCLE_COLORS[ex.muscle]||'#aaa' };
+      });
+    } else {
+      result[wk] = WORKOUT_DEFAULTS[wk];
+    }
+  });
+  return result;
+}
 
 var activeWk=null, wkTimer=null, wkSecs=0;
 var restInt=null,  restSecs=0;
 var wkSets=[];
 
 function renderWkSelector() {
-  var keys = Object.keys(WORKOUTS);
+  var WORKOUTS = getWorkouts(); var keys = Object.keys(WORKOUTS);
   document.getElementById('wk-btns').innerHTML = keys.map(function(w,i){
     return '<button class="wk-sel-btn'+(activeWk===w?' active':'')+'" onclick="selectWorkout('+i+')">'+w+'</button>';
   }).join('');
 }
 
 function selectWorkout(idx) {
-  var name = Object.keys(WORKOUTS)[idx];
+  var WORKOUTS = getWorkouts(); var name = Object.keys(WORKOUTS)[idx];
   activeWk = name;
   document.getElementById('wk-sub').textContent = name+' läuft';
   document.getElementById('cancel-btn').style.display = 'block';
@@ -1652,7 +1689,7 @@ function cancelWorkout() {
 
 function renderExercises() {
   if (!activeWk) { document.getElementById('wk-exercises').innerHTML=''; return; }
-  var exs   = WORKOUTS[activeWk];
+  var WORKOUTS = getWorkouts(); var exs = WORKOUTS[activeWk];
   var lastW = LS.get('last_weights',{});
   var html  = exs.map(function(ex,ei){
     var last    = lastW[ex.name];
@@ -1734,7 +1771,7 @@ function addRest(s) { restSecs+=s; updateRestDisplay(); }
 
 function finishWorkout() {
   if (!activeWk) return;
-  var exs  = WORKOUTS[activeWk];
+  var WORKOUTS = getWorkouts(); var exs = WORKOUTS[activeWk];
   var newW = LS.get('last_weights',{});
   var resultExs = exs.map(function(ex,ei){
     var done = wkSets[ei].filter(function(s){return s.done&&s.weight&&s.reps;});
@@ -1898,10 +1935,147 @@ function handleHistDel(event,btn) {
   renderHistory();
 }
 
+
+// ── Edit Exercises ────────────────────────────────────────────────────────
+var editExWk  = 'Oberkörper';
+var editExIdx = null;
+
+function switchEditWk(wk, btn) {
+  editExWk = wk;
+  document.querySelectorAll('#editex-tabs .wk-sel-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  closeExForm();
+  renderEditList();
+}
+
+function renderEditList() {
+  var exs  = LS.get('custom_ex_' + editExWk, WORKOUT_DEFAULTS[editExWk]);
+  var html = '';
+  exs.forEach(function(ex, i) {
+    var col = MUSCLE_COLORS[ex.muscle] || '#aaa';
+    html += '<div class="ex-edit-item">'
+      + '<div class="ex-edit-info">'
+      + '<div class="ex-edit-name">' + ex.name + '</div>'
+      + '<div class="ex-edit-meta" style="color:' + col + '">' + ex.muscle + ' · ' + ex.sets + '×' + ex.reps + '</div>'
+      + '</div>'
+      + '<button class="ex-edit-btn" data-i="' + i + '" onclick="openExForm(' + i + ')">✎</button>'
+      + '<button class="ex-del-btn"  data-i="' + i + '" onclick="delEx(' + i + ')">×</button>'
+      + '</div>';
+  });
+  document.getElementById('editex-list').innerHTML = html || '<div style="color:var(--text3);text-align:center;padding:24px 0">Keine Übungen</div>';
+}
+
+function openExForm(idx) {
+  editExIdx = idx;
+  var exs = LS.get('custom_ex_' + editExWk, WORKOUT_DEFAULTS[editExWk]);
+  var ex  = idx !== null ? exs[idx] : null;
+  document.getElementById('ex-form-title').textContent = idx !== null ? 'ÜBUNG BEARBEITEN' : 'ÜBUNG HINZUFÜGEN';
+  document.getElementById('ef-name').value = ex ? ex.name : '';
+  document.getElementById('ef-sets').value = ex ? ex.sets : '3';
+  document.getElementById('ef-reps').value = ex ? ex.reps : '10';
+  var muscle = ex ? ex.muscle : 'Brust';
+  document.querySelectorAll('#ef-muscles .muscle-chip').forEach(function(c){ c.classList.toggle('sel', c.textContent === muscle); });
+  document.getElementById('ex-form').style.display = 'block';
+  document.getElementById('ex-form').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function closeExForm() {
+  document.getElementById('ex-form').style.display = 'none';
+  editExIdx = null;
+}
+
+function selMuscle(chip) {
+  document.querySelectorAll('#ef-muscles .muscle-chip').forEach(function(c){ c.classList.remove('sel'); });
+  chip.classList.add('sel');
+}
+
+function saveEx() {
+  var name   = document.getElementById('ef-name').value.trim();
+  var sets   = parseInt(document.getElementById('ef-sets').value) || 3;
+  var reps   = document.getElementById('ef-reps').value.trim() || '10';
+  var mchip  = document.querySelector('#ef-muscles .muscle-chip.sel');
+  if (!name) { showToast('Bitte Namen eingeben'); return; }
+  var muscle = mchip ? mchip.textContent : 'Brust';
+  var exs    = LS.get('custom_ex_' + editExWk, WORKOUT_DEFAULTS[editExWk].map(function(e){ return Object.assign({},e); }));
+  var entry  = { name:name, muscle:muscle, sets:sets, reps:reps };
+  if (editExIdx !== null) { exs[editExIdx] = entry; } else { exs.push(entry); }
+  LS.set('custom_ex_' + editExWk, exs);
+  closeExForm();
+  renderEditList();
+  showToast(editExIdx !== null ? 'Gespeichert!' : 'Hinzugefügt!');
+}
+
+function delEx(idx) {
+  var exs = LS.get('custom_ex_' + editExWk, WORKOUT_DEFAULTS[editExWk].map(function(e){ return Object.assign({},e); }));
+  exs.splice(idx, 1);
+  LS.set('custom_ex_' + editExWk, exs);
+  renderEditList();
+  showToast('Entfernt');
+}
+
+function resetExWorkout() {
+  if (!confirm(editExWk + ' auf Standard zurücksetzen?')) return;
+  localStorage.removeItem('custom_ex_' + editExWk);
+  renderEditList();
+  showToast('Zurückgesetzt');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   renderWkSelector();
+  var lastPage = LS.get('last_page', 'plan');
+  var validPages = ['plan','week','workout','weight','history'];
+  if (validPages.indexOf(lastPage) >= 0) {
+    showPage(lastPage);
+  }
 });
 
 </script>
+
+<div id="page-editex" class="page">
+  <div class="page-hdr">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div class="page-title">ÜBUNGEN</div>
+      <button onclick="showPage('workout')" style="background:none;border:none;color:var(--accent);font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif">Fertig</button>
+    </div>
+    <div class="page-sub">Anpassen für dein Workout</div>
+  </div>
+  <div class="page-body">
+    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap" id="editex-tabs">
+      <button class="wk-sel-btn active" onclick="switchEditWk('Oberkörper',this)">Oberkörper</button>
+      <button class="wk-sel-btn" onclick="switchEditWk('Unterkörper',this)">Unterkörper</button>
+      <button class="wk-sel-btn" onclick="switchEditWk('Ganzkörper',this)">Ganzkörper</button>
+    </div>
+    <div id="editex-list"></div>
+    <button onclick="openExForm(null)" style="width:100%;padding:13px;background:var(--surface);border:0.5px solid var(--border2);color:var(--text2);border-radius:13px;font-weight:600;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-bottom:8px">+ Übung hinzufügen</button>
+    <button onclick="resetExWorkout()" style="width:100%;padding:12px;background:none;border:0.5px solid rgba(255,69,58,.3);color:var(--red,#ff453a);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif">Auf Standard zurücksetzen</button>
+
+    <div class="form-card" id="ex-form" style="display:none;margin-top:16px">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;margin-bottom:14px" id="ex-form-title">ÜBUNG HINZUFÜGEN</div>
+      <div style="margin-bottom:10px">
+        <div class="card-label">Name</div>
+        <input class="set-inp" id="ef-name" type="text" placeholder="z.B. Bankdrücken" style="text-align:left;padding:12px 14px;border-radius:11px;font-size:15px;font-weight:500" />
+      </div>
+      <div style="margin-bottom:10px">
+        <div class="card-label">Muskelgruppe</div>
+        <div class="muscle-chips" id="ef-muscles">
+          <button class="muscle-chip sel" onclick="selMuscle(this)">Brust</button>
+          <button class="muscle-chip" onclick="selMuscle(this)">Rücken</button>
+          <button class="muscle-chip" onclick="selMuscle(this)">Schulter</button>
+          <button class="muscle-chip" onclick="selMuscle(this)">Quadrizeps</button>
+          <button class="muscle-chip" onclick="selMuscle(this)">Hamstrings</button>
+          <button class="muscle-chip" onclick="selMuscle(this)">Core</button>
+          <button class="muscle-chip" onclick="selMuscle(this)">Bizeps</button>
+          <button class="muscle-chip" onclick="selMuscle(this)">Trizeps</button>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">
+        <div><div class="card-label">Sätze</div><input class="set-inp" id="ef-sets" type="number" value="3" min="1" max="10" style="text-align:center" /></div>
+        <div><div class="card-label">Wiederholungen</div><input class="set-inp" id="ef-reps" type="text" value="10" style="text-align:center" /></div>
+      </div>
+      <button onclick="saveEx()" style="width:100%;padding:14px;background:var(--accent);color:#000;border:none;border-radius:13px;font-weight:700;font-size:15px;cursor:pointer;font-family:'DM Sans',sans-serif">Speichern</button>
+      <button onclick="closeExForm()" style="width:100%;padding:13px;background:none;border:0.5px solid var(--border2);color:var(--text2);border-radius:13px;font-weight:600;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px">Abbrechen</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
