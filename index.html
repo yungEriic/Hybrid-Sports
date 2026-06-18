@@ -447,18 +447,30 @@
 
   /* ── Top Nav ── */
   body { padding-bottom: 0 !important; padding-top: env(safe-area-inset-top); }
-  #top-nav-wrap { position:fixed; bottom:0; left:0; right:0; z-index:300; background:rgba(7,7,16,.95); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-top:1px solid var(--border); border-bottom:none; padding-bottom:env(safe-area-inset-bottom); }
-  #top-nav { display:flex; }
-  .nav-btn {
-    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
-    gap:4px; padding:11px 4px 9px; border:none;
-    background:transparent; color:var(--muted); cursor:pointer;
-    font-family:'DM Sans',sans-serif; font-weight:600; font-size:10px;
-    text-transform:uppercase; letter-spacing:.5px; transition:all .2s;
+  #top-nav-wrap {
+    position:fixed; bottom:0; left:0; right:0; z-index:300;
+    padding:0 24px calc(env(safe-area-inset-bottom) + 20px) 24px;
+    pointer-events:none; background:transparent;
   }
-  .nav-btn svg { width:20px; height:20px; }
-  .nav-btn.active { color:var(--accent); }
-  .page { display:none; min-height:100vh; padding-bottom:90px; }
+  #top-nav {
+    display:flex; align-items:center;
+    background:rgba(20,20,28,.92);
+    backdrop-filter:blur(40px) saturate(180%);
+    -webkit-backdrop-filter:blur(40px) saturate(180%);
+    border-radius:26px; padding:8px 8px;
+    pointer-events:all;
+    box-shadow:0 16px 48px rgba(0,0,0,.6), 0 0 0 0.5px rgba(255,255,255,.08);
+  }
+  .nav-btn {
+    flex:1; display:flex; flex-direction:column; align-items:center;
+    justify-content:center; padding:10px 6px;
+    border:none; background:transparent; color:rgba(255,255,255,.28);
+    cursor:pointer; transition:all .2s ease; font-family:inherit; border-radius:18px;
+  }
+  .nav-btn svg { width:26px; height:26px; stroke-width:1.5; transition:transform .2s ease; }
+  .nav-btn.active { color:var(--accent); background:rgba(232,255,71,.08); }
+  .nav-btn.active svg { transform:scale(1.08); filter:drop-shadow(0 0 7px rgba(232,255,71,.35)); }
+  .page { display:none; min-height:100vh; padding-bottom:110px; }
   .page.active { display:block; }
   .card { background:var(--surface); border:0.5px solid var(--border); border-radius:20px; padding:16px 18px; margin-bottom:12px; }
   .card-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
@@ -573,6 +585,27 @@
   .muscle-chips { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
   .muscle-chip { padding:6px 12px; border-radius:999px; border:0.5px solid var(--border2); background:none; color:var(--text2); font-size:12px; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif; transition:all .15s; }
   .muscle-chip.sel { border-color:var(--accent); color:var(--accent); background:rgba(48,209,88,.1); }
+
+  /* ── Plan Editor ── */
+  .day-edit-btn { font-size:11px; font-weight:600; color:var(--muted); padding:4px 10px; background:var(--surface2); border:0.5px solid var(--border); border-radius:8px; cursor:pointer; white-space:nowrap; }
+  .s-del-btn { background:none; border:none; color:rgba(255,71,87,.35); cursor:pointer; font-size:20px; padding:4px 2px; flex-shrink:0; }
+  .plan-overlay { position:fixed; inset:0; background:rgba(0,0,0,.65); z-index:200; display:none; align-items:flex-end; backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
+  .plan-overlay.show { display:flex; }
+  .plan-sheet { width:100%; background:var(--surface); border-radius:22px 22px 0 0; padding:16px 16px calc(env(safe-area-inset-bottom)+24px); border-top:0.5px solid var(--border); max-height:82vh; overflow-y:auto; }
+  .plan-sheet-handle { width:36px; height:4px; background:var(--surface2); border-radius:999px; margin:0 auto 14px; }
+  .plan-sheet-title { font-size:18px; font-weight:800; letter-spacing:-.3px; margin-bottom:2px; }
+  .plan-sheet-sub { font-size:13px; color:var(--muted); margin-bottom:16px; }
+  .sess-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px; }
+  .sess-opt { display:flex; align-items:center; gap:10px; padding:12px; background:var(--surface2); border:0.5px solid var(--border); border-radius:14px; cursor:pointer; transition:all .15s; }
+  .sess-opt:active { opacity:.7; transform:scale(.97); }
+  .sess-opt-icon { width:32px; height:32px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0; }
+  .sess-opt-name { font-size:13px; font-weight:700; line-height:1.2; }
+  .sess-opt-cat  { font-size:10px; color:var(--muted); margin-top:1px; }
+  .plan-carb-row { display:flex; gap:6px; margin-bottom:14px; }
+  .plan-carb-btn { flex:1; padding:9px 6px; border-radius:11px; border:0.5px solid var(--border); background:var(--surface2); color:var(--muted); font-size:12px; font-weight:600; cursor:pointer; text-align:center; transition:all .15s; font-family:inherit; }
+  .plan-carb-btn.active { border-color:var(--accent); color:var(--accent); background:rgba(232,255,71,.08); }
+  .plan-reset-btn { width:100%; padding:11px; background:none; border:0.5px solid rgba(255,71,87,.25); color:rgba(255,71,87,.7); border-radius:11px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; margin-top:6px; }
+
 </style>
 </head>
 <body>
@@ -581,23 +614,18 @@
   <div id="top-nav">
     <button class="nav-btn active" onclick="showPage('plan')" id="nav-plan">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Plan
     </button>
     <button class="nav-btn" onclick="showPage('week')" id="nav-week">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      Woche
     </button>
     <button class="nav-btn" onclick="showPage('workout')" id="nav-workout">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v6a6 6 0 0 0 12 0V4"/><line x1="4" y1="20" x2="20" y2="20"/></svg>
-      Workout
     </button>
     <button class="nav-btn" onclick="showPage('weight')" id="nav-weight">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      Gewicht
     </button>
     <button class="nav-btn" onclick="showPage('history')" id="nav-history">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
-      Verlauf
     </button>
   </div>
 </div>
@@ -611,6 +639,7 @@
   <header>
     <div class="title">HYBRID ATHLET</div>
   </header>
+    <div style="text-align:right;padding:0 20px 8px"><button onclick="planReset()" style="font-size:11px;color:var(--muted);background:none;border:0.5px solid var(--border);border-radius:8px;padding:5px 10px;cursor:pointer;font-family:inherit">Plan zurücksetzen</button></div>
 
   <!-- Phase Tabs -->
   <div class="section-title">Aufbauphase wählen</div>
@@ -652,7 +681,10 @@
         🌙 <strong>Nachtschicht = Erhaltungswoche.</strong> Gleiche Struktur, reduzierte Intensität. Z2 bleibt unverändert.
       </div>
       <div class="week-grid">
-        <div class="day-row">
+        <div class="phase-week-grid">
+
+</div>
+<div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 130g</div></div>
           <div class="sessions">
             <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Leichter</div></div><span class="session-time">14–15 Uhr</span></div>
@@ -848,7 +880,10 @@
         🌙 <strong>Nachtschicht = Erhaltungswoche.</strong> Gleiche Struktur, reduzierte Intensität. Z2 bleibt unverändert.
       </div>
       <div class="week-grid">
-        <div class="day-row">
+        <div class="phase-week-grid">
+
+</div>
+<div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 140g</div></div>
           <div class="sessions">
             <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Leichter</div></div><span class="session-time">14 Uhr</span></div>
@@ -1039,7 +1074,10 @@
         🌙 <strong>Nachtschicht = Erhaltungswoche.</strong> Gleiche Struktur, reduzierte Intensität. Z2 bleibt unverändert.
       </div>
       <div class="week-grid">
-        <div class="day-row">
+        <div class="phase-week-grid">
+
+</div>
+<div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 150g</div></div>
           <div class="sessions">
             <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Leichter</div></div><span class="session-time">14 Uhr</span></div>
@@ -1523,7 +1561,9 @@ function getWeekKey() {
 // ── Week ──────────────────────────────────────────────────────────────────
 function renderWeek() {
   var key  = getActiveKey();
-  var plan = WEEK_PLANS[key];
+  var plan = getCustomPlan(key) || WEEK_PLANS[key];
+  // Convert custom plan sessions to week plan format
+  if (getCustomPlan(key)) plan = plan.map(function(d){ return {day:d.day,carb:d.carb,carbLbl:d.carbLbl||d.carb,sessions:d.sessions}; });
   var shiftMap = {'fruh':'Frühschicht','spat':'Spätschicht','nacht':'Nachtschicht'};
   var parts = key.split('-');
   document.getElementById('week-sub').textContent = 'Phase '+parts[0]+' - '+(shiftMap[parts[1]]||parts[1]);
@@ -2020,6 +2060,182 @@ function resetExWorkout() {
   showToast('Zurückgesetzt');
 }
 
+
+// ── Plan Editor ────────────────────────────────────────────────────────────
+var SESSION_TYPES = [
+  {id:'vo2max',    icon:'🚴', name:'VO2Max',         cat:'Rad',    type:'rad',  detail:'Intervalle @Z5'},
+  {id:'sweetspot', icon:'🚴', name:'Sweet Spot',     cat:'Rad',    type:'rad',  detail:'@88–93% FTP'},
+  {id:'threshold', icon:'🚴', name:'Threshold',      cat:'Rad',    type:'rad',  detail:'@95–105% FTP'},
+  {id:'z2',        icon:'🚴', name:'Z2 Grundlage',   cat:'Rad',    type:'rad',  detail:'108–126 bpm'},
+  {id:'ausfahrt',  icon:'🚴', name:'Lange Ausfahrt', cat:'Rad',    type:'rad',  detail:'90–120 Min. Z2'},
+  {id:'unterk',    icon:'🏋️', name:'Unterkörper',    cat:'Gym',    type:'gym',  detail:'Squat · RDL · Swings'},
+  {id:'oberk',     icon:'🏋️', name:'Oberkörper',     cat:'Gym',    type:'gym',  detail:'Drücken · Ziehen'},
+  {id:'band',      icon:'💪', name:'Band-Routine',   cat:'Core',   type:'core', detail:'20 Min.'},
+  {id:'laufen',    icon:'🏃', name:'Laufen',          cat:'Laufen', type:'lauf', detail:'Z2 locker'},
+  {id:'ruhetag',   icon:'😴', name:'Ruhetag',         cat:'Ruhe',   type:'ruhe', detail:''},
+];
+
+var CARB_LABELS_ED = {high:'High 220g+', mid:'Mid 160g', low:'Low 120g'};
+var CARB_ID_MAP    = {high:'h', mid:'m', low:'l'};
+var CARB_REV_MAP   = {h:'high', m:'mid', l:'low'};
+
+var editingDayIdx = null;
+
+function getCustomPlan(key) {
+  var saved = LS.get('custom_plan_'+key, null);
+  if (saved) return saved;
+  // Build default from WEEK_PLANS
+  var wp = WEEK_PLANS[key];
+  if (!wp) return null;
+  return wp.map(function(d) {
+    return {
+      day: d.day,
+      carb: CARB_ID_MAP[d.carb] || 'l',
+      carbLbl: d.carbLbl,
+      sessions: d.sessions.map(function(s){ return {id:s.type+'_'+Math.random().toString(36).slice(2), sid:guessSessionId(s), icon:s.icon, name:s.title, type:s.type, detail:s.detail, time:s.time}; })
+    };
+  });
+}
+
+function guessSessionId(s) {
+  var t = s.title.toLowerCase();
+  if (t.indexOf('vo2')>=0) return 'vo2max';
+  if (t.indexOf('sweet')>=0) return 'sweetspot';
+  if (t.indexOf('threshold')>=0) return 'threshold';
+  if (t.indexOf('z2')>=0||t.indexOf('grundlage')>=0) return 'z2';
+  if (t.indexOf('ausfahrt')>=0) return 'ausfahrt';
+  if (t.indexOf('unterk')>=0) return 'unterk';
+  if (t.indexOf('oberk')>=0) return 'oberk';
+  if (t.indexOf('band')>=0) return 'band';
+  if (t.indexOf('laufen')>=0||t.indexOf('lauf')>=0) return 'laufen';
+  return 'ruhetag';
+}
+
+function saveCustomPlan(key, plan) {
+  LS.set('custom_plan_'+key, plan);
+}
+
+function openPlanEditor(dayIdx) {
+  var key  = getActiveKey();
+  var plan = getCustomPlan(key);
+  if (!plan) return;
+  editingDayIdx = dayIdx;
+  var day = plan[dayIdx];
+  var dayNames = ['Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag','Sonntag'];
+  document.getElementById('plan-sheet-title').textContent = dayNames[dayIdx] || day.day;
+
+  // Session options
+  document.getElementById('plan-sess-grid').innerHTML = SESSION_TYPES.map(function(st) {
+    var bgMap = {rad:'rgba(71,184,255,.12)',gym:'rgba(255,107,53,.12)',core:'rgba(46,204,113,.12)',lauf:'rgba(160,255,120,.12)',ruhe:'rgba(255,255,255,.06)'};
+    var colMap = {rad:'var(--rad)',gym:'var(--gym)',core:'var(--lauf)',lauf:'var(--lauf)',ruhe:'var(--muted)'};
+        return '<button class="sess-opt" data-sid="'+st.id+'" onclick="planAddSession(this.dataset.sid)">' 
+      +'<div class="sess-opt-icon" style="background:'+bgMap[st.type]+'">'+st.icon+'</div>'
+      +'<div><div class="sess-opt-name" style="color:'+colMap[st.type]+'">'+st.name+'</div>'
+      +'<div class="sess-opt-cat">'+st.cat+'</div></div>'
+      +'</button>';
+  }).join('');
+
+  // Carb buttons
+  var carbId = CARB_ID_MAP[day.carb] || day.carb;
+  document.querySelectorAll('.plan-carb-btn').forEach(function(b){
+    b.classList.toggle('active', b.getAttribute('data-c')===carbId);
+  });
+
+  document.getElementById('plan-overlay').classList.add('show');
+}
+
+function closePlanEditor(e) {
+  if (e && e.target !== document.getElementById('plan-overlay')) return;
+  document.getElementById('plan-overlay').classList.remove('show');
+  editingDayIdx = null;
+  renderPlanCustom();
+}
+
+function planAddSession(sid) {
+  var key  = getActiveKey();
+  var plan = getCustomPlan(key);
+  var day  = plan[editingDayIdx];
+  if (day.sessions.length >= 2) { showToast('Max. 2 Einheiten pro Tag'); return; }
+  var st = SESSION_TYPES.find(function(s){return s.id===sid;});
+  if (!st) return;
+  // Remove ruhetag if adding real session
+  if (sid !== 'ruhetag') day.sessions = day.sessions.filter(function(s){return s.sid!=='ruhetag';});
+  day.sessions.push({id:sid+'_'+Date.now(), sid:sid, icon:st.icon, name:st.name, type:st.type, detail:st.detail, time:''});
+  saveCustomPlan(key, plan);
+  renderPlanCustom();
+  showToast(st.name+' hinzugefügt');
+}
+
+function planRemoveSession(dayIdx, sessionId) {
+  var key  = getActiveKey();
+  var plan = getCustomPlan(key);
+  plan[dayIdx].sessions = plan[dayIdx].sessions.filter(function(s){return s.id!==sessionId;});
+  saveCustomPlan(key, plan);
+  renderPlanCustom();
+}
+
+function planSetCarb(carbId, btn) {
+  if (editingDayIdx === null) return;
+  var key  = getActiveKey();
+  var plan = getCustomPlan(key);
+  var carbMap = {h:'low', m:'mid', hi:'high'};
+  var carbLblMap = {h:'Low 120g', m:'Mid 160g', hi:'High 220g+'};
+  // btn data-c = h/m/hi
+  var dc = btn.getAttribute('data-c');
+  var newCarb = {h:'low',m:'mid',hi:'high'}[dc] || 'mid';
+  var newLbl  = {h:'Low 120g',m:'Mid 160g',hi:'High 220g+'}[dc] || 'Mid 160g';
+  plan[editingDayIdx].carb   = newCarb;
+  plan[editingDayIdx].carbLbl = newLbl;
+  saveCustomPlan(key, plan);
+  document.querySelectorAll('.plan-carb-btn').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-c')===dc);});
+  renderPlanCustom();
+}
+
+function planReset() {
+  var key = getActiveKey();
+  localStorage.removeItem('custom_plan_'+key);
+  renderPlanCustom();
+  showToast('Plan zurückgesetzt');
+}
+
+function renderPlanCustom() {
+  var key  = getActiveKey();
+  var plan = getCustomPlan(key);
+  if (!plan) return;
+  var typeColMap = {rad:'var(--rad)',gym:'var(--gym)',core:'var(--lauf)',lauf:'var(--lauf)',ruhe:'var(--muted)'};
+  var carbClassMap = {high:'carb-high',mid:'carb-mid',low:'carb-low'};
+  // Find the phase-content container for current phase+shift
+  var phaseEl = document.querySelector('.phase-content.active');
+  if (!phaseEl) return;
+  var gridEl  = phaseEl.querySelector('.phase-week-grid');
+  if (!gridEl) return;
+
+  gridEl.innerHTML = plan.map(function(day, di) {
+    var carbCls = carbClassMap[day.carb] || 'carb-low';
+    var sessHtml = day.sessions.map(function(s) {
+      return '<div class="session '+s.type+'">'
+        +'<span class="session-icon">'+s.icon+'</span>'
+        +'<div class="session-info">'
+        +'<div class="session-title" style="color:'+typeColMap[s.type]+'">'+s.name+'</div>'
+        +(s.detail?'<div class="session-detail">'+s.detail+'</div>':'')
+        +'</div>'
+        +(s.time?'<span class="session-time">'+s.time+'</span>':'')
+                +'<button class="s-del-btn" data-di="'+di+'" data-sid="'+s.id+'" onclick="planRemoveSession(parseInt(this.dataset.di),this.dataset.sid)">×</button>'
+        +'</div>';
+    }).join('');
+    return '<div class="day-row">'
+      +'<div class="day-header" style="cursor:default">'
+      +'<span class="day-name">'+day.day+'</span>'
+      +'<div style="display:flex;align-items:center;gap:8px">'
+      +'<span class="day-carb '+carbCls+'">'+(day.carbLbl||day.carb)+'</span>'
+      +'<button class="day-edit-btn" onclick="openPlanEditor('+di+')">+ Einheit</button>'
+      +'</div>'
+      +'</div>'
+      +sessHtml
+      +'</div>';
+  }).join('');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   renderWkSelector();
   var lastPage = LS.get('last_page', 'plan');
@@ -2075,6 +2291,22 @@ document.addEventListener('DOMContentLoaded', function() {
       <button onclick="saveEx()" style="width:100%;padding:14px;background:var(--accent);color:#000;border:none;border-radius:13px;font-weight:700;font-size:15px;cursor:pointer;font-family:'DM Sans',sans-serif">Speichern</button>
       <button onclick="closeExForm()" style="width:100%;padding:13px;background:none;border:0.5px solid var(--border2);color:var(--text2);border-radius:13px;font-weight:600;font-size:14px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px">Abbrechen</button>
     </div>
+  </div>
+</div>
+
+<div class="plan-overlay" id="plan-overlay" onclick="closePlanEditor(event)">
+  <div class="plan-sheet">
+    <div class="plan-sheet-handle"></div>
+    <div class="plan-sheet-title" id="plan-sheet-title">Tag bearbeiten</div>
+    <div class="plan-sheet-sub">Einheit hinzufügen · max. 2 pro Tag</div>
+    <div class="sess-grid" id="plan-sess-grid"></div>
+    <div style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;font-weight:600;margin-bottom:8px">Carb-Tag</div>
+    <div class="plan-carb-row">
+      <button class="plan-carb-btn" data-c="hi" onclick="planSetCarb('hi',this)">🔥 High</button>
+      <button class="plan-carb-btn active" data-c="m" onclick="planSetCarb('m',this)">⚡ Mid</button>
+      <button class="plan-carb-btn" data-c="h" onclick="planSetCarb('h',this)">🌙 Low</button>
+    </div>
+    <button onclick="document.getElementById('plan-overlay').classList.remove('show');renderPlanCustom();" style="width:100%;padding:13px;background:var(--surface2);border:0.5px solid var(--border);border-radius:13px;color:var(--text);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;">Fertig</button>
   </div>
 </div>
 </body>
