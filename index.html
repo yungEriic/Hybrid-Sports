@@ -1282,6 +1282,7 @@ function setPhase(phase) {
   document.querySelectorAll('.phase-content').forEach(c => c.classList.remove('active'));
   document.querySelector(`[data-phase="${phase}"]`).classList.add('active');
   document.getElementById(`phase-${phase}`).classList.add('active');
+  setTimeout(renderPlanCustom, 10);
 }
 
 function setShift(shift, phase) {
@@ -1411,6 +1412,8 @@ function setPhase(phase) {
   document.querySelectorAll('.phase-content').forEach(c => c.classList.remove('active'));
   document.querySelector(`[data-phase="${phase}"]`).classList.add('active');
   document.getElementById(`phase-${phase}`).classList.add('active');
+  setTimeout(renderPlanCustom, 10);
+  setTimeout(renderPlanCustom, 10);
 }
 
 function setShift(shift, phase) {
@@ -2258,6 +2261,7 @@ function renderPlanCustom() {
 
 document.addEventListener('DOMContentLoaded', function() {
   renderWkSelector();
+  renderPlanCustom();
   var lastPage = LS.get('last_page', 'plan');
   var validPages = ['plan','week','workout','weight','history'];
   if (validPages.indexOf(lastPage) >= 0) {
