@@ -1561,9 +1561,29 @@ function getWeekKey() {
 // ── Week ──────────────────────────────────────────────────────────────────
 function renderWeek() {
   var key  = getActiveKey();
-  var plan = getCustomPlan(key) || WEEK_PLANS[key];
-  // Convert custom plan sessions to week plan format
-  if (getCustomPlan(key)) plan = plan.map(function(d){ return {day:d.day,carb:d.carb,carbLbl:d.carbLbl||d.carb,sessions:d.sessions}; });
+  var rawPlan = getCustomPlan(key);
+  var plan;
+  if (rawPlan) {
+    // Custom plan: normalize sessions (name->title)
+    plan = rawPlan.map(function(d) {
+      return {
+        day: d.day,
+        carb: d.carb,
+        carbLbl: d.carbLbl || d.carb,
+        sessions: (d.sessions||[]).map(function(s) {
+          return {
+            type:   s.type,
+            icon:   s.icon,
+            title:  s.name || s.title || '',
+            detail: s.detail || '',
+            time:   s.time || ''
+          };
+        })
+      };
+    });
+  } else {
+    plan = WEEK_PLANS[key] || [];
+  }
   var shiftMap = {'fruh':'Frühschicht','spat':'Spätschicht','nacht':'Nachtschicht'};
   var parts = key.split('-');
   document.getElementById('week-sub').textContent = 'Phase '+parts[0]+' - '+(shiftMap[parts[1]]||parts[1]);
