@@ -696,7 +696,7 @@
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 130g</div></div>
           <div class="sessions">
             <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Leichter</div></div><span class="session-time">14–15 Uhr</span></div>
-            <div class="session core"><span class="session-icon">🔥</span><div class="session-info"><div class="session-title">EMOM Core 15 Min.</div><div class="session-detail">EMOM Core</div></div><span class="session-time">danach</span><button class="session-check" data-title="EMOM Core 15 Min." onclick="planToggle(this)"></button></div>
+            <div class="session core"><span class="session-icon">🔥</span><div class="session-info"><div class="session-title">Ganzkörper</div><div class="session-detail">Ganzkörper</div></div><span class="session-time">danach</span><button class="session-check" data-title="Ganzkörper" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
@@ -747,7 +747,7 @@
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 130g</div></div>
           <div class="sessions">
             <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Oberkörper Kraft</div></div><span class="session-time">9–10 Uhr</span><button class="session-check" data-title="Oberkörper" onclick="planToggle(this)"></button></div>
-            <div class="session core"><span class="session-icon">🔥</span><div class="session-info"><div class="session-title">EMOM Core 15 Min.</div><div class="session-detail">EMOM Core</div></div><span class="session-time">danach</span><button class="session-check" data-title="EMOM Core 15 Min." onclick="planToggle(this)"></button></div>
+            <div class="session core"><span class="session-icon">🔥</span><div class="session-info"><div class="session-title">Ganzkörper</div><div class="session-detail">Ganzkörper</div></div><span class="session-time">danach</span><button class="session-check" data-title="Ganzkörper" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
@@ -1357,7 +1357,7 @@ const WEEK_PLANS = {
     { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Ruhetag',detail:'',time:''}]},
   ],
   '1-spat': [
-    { day:'MO', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Gym',time:'9-10 Uhr'},{type:'core',icon:'🔥',title:'EMOM Core',detail:'Core',time:'danach'}]},
+    { day:'MO', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Gym',time:'9-10 Uhr'},{type:'core',icon:'🔥',title:'Ganzkörper',detail:'Core',time:'danach'}]},
     { day:'DI', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'VO2Max',detail:'Rad',time:'9-10 Uhr'}]},
     { day:'MI', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'rad',icon:'🚴',title:'Z2 Grundlage',detail:'Rad',time:'9-10 Uhr'},{type:'lauf',icon:'🏃',title:'Laufen Z2',detail:'Laufen',time:'11 Uhr'}]},
     { day:'DO', carb:'high', carbLbl:'High 210g+', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot',detail:'Rad',time:'9-10 Uhr'}]},
@@ -1366,7 +1366,7 @@ const WEEK_PLANS = {
     { day:'SO', carb:'low', carbLbl:'Low 100g', sessions:[{type:'ruhe',icon:'😴',title:'Ruhetag',detail:'',time:''}]},
   ],
   '1-nacht': [
-    { day:'MO', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Gym',time:'14-15 Uhr'},{type:'core',icon:'🔥',title:'EMOM Core',detail:'Core',time:'danach'}]},
+    { day:'MO', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'gym',icon:'🏋️',title:'Oberkörper',detail:'Gym',time:'14-15 Uhr'},{type:'core',icon:'🔥',title:'Ganzkörper',detail:'Core',time:'danach'}]},
     { day:'DI', carb:'mid', carbLbl:'Mid 160g', sessions:[{type:'rad',icon:'🚴',title:'VO2Max',detail:'Rad',time:'14-15 Uhr'}]},
     { day:'MI', carb:'mid', carbLbl:'Mid 130g', sessions:[{type:'rad',icon:'🚴',title:'Z2 Grundlage',detail:'Rad',time:'14-15 Uhr'}]},
     { day:'DO', carb:'mid', carbLbl:'Mid 170g', sessions:[{type:'rad',icon:'🚴',title:'Sweet Spot',detail:'Rad',time:'14-15 Uhr'}]},
@@ -2101,7 +2101,7 @@ var PE_TYPES = [
   {id:'ausfahrt',  icon:'🚴', name:'Lange Ausfahrt', cat:'Rad',    type:'rad',  detail:'90–120 Min.'},
   {id:'unterk',    icon:'🏋️', name:'Unterkörper',    cat:'Gym',    type:'gym',  detail:'Squat · RDL'},
   {id:'oberk',     icon:'🏋️', name:'Oberkörper',     cat:'Gym',    type:'gym',  detail:'Drücken · Ziehen'},
-  {id:'band',      icon:'💪', name:'Band-Routine',   cat:'Core',   type:'core', detail:'20 Min.'},
+  {id:'band',      icon:'💪', name:'Ganzkörper',   cat:'Core',   type:'core', detail:'20 Min.'},
   {id:'laufen',    icon:'🏃', name:'Laufen',          cat:'Laufen', type:'lauf', detail:'Z2 locker'},
   {id:'ruhetag',   icon:'😴', name:'Ruhetag',         cat:'Ruhe',   type:'ruhe', detail:''},
 ];
