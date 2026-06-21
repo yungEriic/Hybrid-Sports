@@ -606,6 +606,20 @@
   .pe-add-btn { font-size:11px; font-weight:600; color:var(--muted); padding:3px 8px; background:var(--surface2); border:0.5px solid var(--border); border-radius:7px; cursor:pointer; margin-left:6px; flex-shrink:0; }
   .pe-del-btn { background:none; border:none; color:rgba(255,71,87,.4); cursor:pointer; font-size:18px; padding:2px 4px; flex-shrink:0; }
 
+
+  .session { position:relative; }
+  .session-check {
+    width:26px; height:26px; border-radius:8px;
+    border:1.5px solid var(--border2);
+    background:none; cursor:pointer;
+    transition:all .15s; flex-shrink:0;
+    font-size:13px; font-weight:700; color:var(--text3);
+    font-family:inherit; margin-left:auto;
+  }
+  .session-check.done { background:var(--accent); border-color:var(--accent); color:#000; }
+  .session.done-session { opacity:.45; }
+  .session-title.done-title { text-decoration:line-through; }
+
 </style>
 </head>
 <body>
@@ -614,9 +628,6 @@
   <div id="top-nav">
     <button class="nav-btn active" onclick="showPage('plan')" id="nav-plan">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-    </button>
-    <button class="nav-btn" onclick="showPage('week')" id="nav-week">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     </button>
     <button class="nav-btn" onclick="showPage('workout')" id="nav-workout">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v6a6 6 0 0 0 12 0V4"/><line x1="4" y1="20" x2="20" y2="20"/></svg>
@@ -639,6 +650,7 @@
   <header>
     <div class="title">HYBRID ATHLET</div>
   </header>
+  <div style="text-align:right;padding:0 20px 8px"><button onclick="resetWeekPlan()" style="font-size:11px;color:var(--muted);background:none;border:0.5px solid var(--border);border-radius:8px;padding:5px 10px;cursor:pointer;font-family:inherit">Woche zurücksetzen</button></div>
 
   <!-- Phase Tabs -->
   <div class="section-title">Aufbauphase wählen</div>
@@ -684,7 +696,7 @@
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 130g</div></div>
           <div class="sessions">
             <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Leichter</div></div><span class="session-time">14–15 Uhr</span></div>
-            <div class="session core"><span class="session-icon">🔥</span><div class="session-info"><div class="session-title">EMOM Core 15 Min.</div><div class="session-detail">EMOM Core</div></div><span class="session-time">danach</span></div>
+            <div class="session core"><span class="session-icon">🔥</span><div class="session-info"><div class="session-title">EMOM Core 15 Min.</div><div class="session-detail">EMOM Core</div></div><span class="session-time">danach</span><button class="session-check" data-title="EMOM Core 15 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
@@ -696,7 +708,7 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 130g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 60 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">14–15 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 60 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">14–15 Uhr</span><button class="session-check" data-title="Z2 – 60 Min. ✅" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
@@ -715,7 +727,7 @@
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb mid">Mid 140g</div></div>
           <div class="sessions">
             <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Leichter</div></div><span class="session-time">morgens</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 60 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 60 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span><button class="session-check" data-title="Z2 Outdoor – 60 Min. ✅" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
@@ -742,40 +754,40 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 130g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Oberkörper Kraft</div></div><span class="session-time">9–10 Uhr</span></div>
-            <div class="session core"><span class="session-icon">🔥</span><div class="session-info"><div class="session-title">EMOM Core 15 Min.</div><div class="session-detail">EMOM Core</div></div><span class="session-time">danach</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Oberkörper Kraft</div></div><span class="session-time">9–10 Uhr</span><button class="session-check" data-title="Oberkörper" onclick="planToggle(this)"></button></div>
+            <div class="session core"><span class="session-icon">🔥</span><div class="session-info"><div class="session-title">EMOM Core 15 Min.</div><div class="session-detail">EMOM Core</div></div><span class="session-time">danach</span><button class="session-check" data-title="EMOM Core 15 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DI</div><div class="day-carb high">High 210g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max – Kickr Core</div><div class="session-detail">VO2Max</div></div><span class="session-time">9–10 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max – Kickr Core</div><div class="session-detail">VO2Max</div></div><span class="session-time">9–10 Uhr</span><button class="session-check" data-title="VO2Max – Kickr Core" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 130g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 60 Min.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">9–10 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 20 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">11 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 60 Min.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">9–10 Uhr</span><button class="session-check" data-title="Z2 – 60 Min." onclick="planToggle(this)"></button></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 20 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">11 Uhr</span><button class="session-check" data-title="Laufen – 20 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DO</div><div class="day-carb high">High 210g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot / Threshold</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">9–10 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot / Threshold</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">9–10 Uhr</span><button class="session-check" data-title="Sweet Spot / Threshold" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">FR</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">9–10 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">9–10 Uhr</span><button class="session-check" data-title="Ganzkörper Mix" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb mid">Mid 150g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Unterkörper Kraft</div></div><span class="session-time">morgens</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Unterkörper Kraft</div></div><span class="session-time">morgens</span><button class="session-check" data-title="Unterkörper" onclick="planToggle(this)"></button></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span><button class="session-check" data-title="Z2 Outdoor" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
@@ -785,13 +797,7 @@
           </div>
         </div>
       </div>
-      <div class="notes-section">
-        <h3>🌆 Spätschicht Vorteil</h3>
-        <div class="note-item"><strong>Beste Schicht zum Trainieren</strong> – morgens frisch, ganzer Vormittag für Sport</div>
-        <div class="note-item">Training 9–11 Uhr, dann essen, dann Schicht um 13:30 – perfekter Rhythmus</div>
-        <div class="note-item">Koffein bei Intensiveinheiten ok – genug Zeit vor Schichtbeginn</div>
-        <div class="note-item">Spätschicht = <strong>volles Programm</strong> – hier alle Einheiten ausschöpfen</div>
-      </div>
+      
     </div>
 
     <!-- Früh Phase 1 -->
@@ -800,39 +806,39 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 130g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Oberkörper Kraft</div></div><span class="session-time">14–15 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Oberkörper Kraft</div></div><span class="session-time">14–15 Uhr</span><button class="session-check" data-title="Oberkörper" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DI</div><div class="day-carb high">High 210g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max – Kickr Core</div><div class="session-detail">VO2Max</div></div><span class="session-time">14–15 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max – Kickr Core</div><div class="session-detail">VO2Max</div></div><span class="session-time">14–15 Uhr</span><button class="session-check" data-title="VO2Max – Kickr Core" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 130g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">14–15 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 20 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">16 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">14–15 Uhr</span><button class="session-check" data-title="Ganzkörper Mix" onclick="planToggle(this)"></button></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 20 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">16 Uhr</span><button class="session-check" data-title="Laufen – 20 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DO</div><div class="day-carb high">High 210g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot / Threshold</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">14–15 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot / Threshold</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">14–15 Uhr</span><button class="session-check" data-title="Sweet Spot / Threshold" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">FR</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 60 Min.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">14–15 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 60 Min.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">14–15 Uhr</span><button class="session-check" data-title="Z2 – 60 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb mid">Mid 150g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Unterkörper Kraft</div></div><span class="session-time">morgens</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 90 Min.+</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Unterkörper Kraft</div></div><span class="session-time">morgens</span><button class="session-check" data-title="Unterkörper" onclick="planToggle(this)"></button></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 90 Min.+</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span><button class="session-check" data-title="Z2 Outdoor – 90 Min.+" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
@@ -891,7 +897,7 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 140g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 60–75 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 60–75 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">14 Uhr</span><button class="session-check" data-title="Z2 – 60–75 Min. ✅" onclick="planToggle(this)"></button></div>
             <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 20 Min. <span style="color:var(--nacht);font-size:10px">↓ kürzer</span></div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">16 Uhr</span></div>
           </div>
         </div>
@@ -911,7 +917,7 @@
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb mid">Mid 160g</div></div>
           <div class="sessions">
             <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Leichter</div></div><span class="session-time">morgens</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 60–90 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 60–90 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span><button class="session-check" data-title="Z2 Outdoor – 60–90 Min. ✅" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
@@ -936,40 +942,40 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 150g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Progressiv</div></div><span class="session-time">9 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 25 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">11 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Progressiv</div></div><span class="session-time">9 Uhr</span><button class="session-check" data-title="Oberkörper" onclick="planToggle(this)"></button></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 25 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">11 Uhr</span><button class="session-check" data-title="Laufen – 25 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DI</div><div class="day-carb high">High 210g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max</div><div class="session-detail">VO2Max</div></div><span class="session-time">9 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max</div><div class="session-detail">VO2Max</div></div><span class="session-time">9 Uhr</span><button class="session-check" data-title="VO2Max" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 150g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 75 Min.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">9 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 75 Min.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">9 Uhr</span><button class="session-check" data-title="Z2 – 75 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DO</div><div class="day-carb high">High 210g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">9 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">9 Uhr</span><button class="session-check" data-title="Sweet Spot" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">FR</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">9 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">11 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">9 Uhr</span><button class="session-check" data-title="Ganzkörper Mix" onclick="planToggle(this)"></button></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">11 Uhr</span><button class="session-check" data-title="Laufen – 30 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb mid">Mid 170g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Progressiv</div></div><span class="session-time">morgens</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 90 Min.+</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Progressiv</div></div><span class="session-time">morgens</span><button class="session-check" data-title="Unterkörper" onclick="planToggle(this)"></button></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 90 Min.+</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span><button class="session-check" data-title="Z2 Outdoor – 90 Min.+" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
@@ -992,39 +998,39 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 150g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail"></div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail"></div></div><span class="session-time">14 Uhr</span><button class="session-check" data-title="Oberkörper" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DI</div><div class="day-carb high">High 210g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max</div><div class="session-detail">VO2Max</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max</div><div class="session-detail">VO2Max</div></div><span class="session-time">14 Uhr</span><button class="session-check" data-title="VO2Max" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 150g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">14 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 25 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">16 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">14 Uhr</span><button class="session-check" data-title="Ganzkörper Mix" onclick="planToggle(this)"></button></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 25 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">16 Uhr</span><button class="session-check" data-title="Laufen – 25 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DO</div><div class="day-carb high">High 210g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">14 Uhr</span><button class="session-check" data-title="Sweet Spot" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">FR</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">14 Uhr</span><button class="session-check" data-title="Laufen – 30 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb mid">Mid 170g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Progressiv</div></div><span class="session-time">morgens</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 90 Min.+</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Progressiv</div></div><span class="session-time">morgens</span><button class="session-check" data-title="Unterkörper" onclick="planToggle(this)"></button></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 90 Min.+</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span><button class="session-check" data-title="Z2 Outdoor – 90 Min.+" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
@@ -1082,7 +1088,7 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 150g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 75 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 75 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">14 Uhr</span><button class="session-check" data-title="Z2 – 75 Min. ✅" onclick="planToggle(this)"></button></div>
             <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 20–25 Min. <span style="color:var(--nacht);font-size:10px">↓ kürzer</span></div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">16 Uhr</span></div>
           </div>
         </div>
@@ -1102,7 +1108,7 @@
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb mid">Mid 170g</div></div>
           <div class="sessions">
             <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper <span style="color:var(--nacht);font-size:10px">↓ 1 Stufe leichter</span></div><div class="session-detail">Leichter</div></div><span class="session-time">morgens</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 90 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 90 Min. ✅</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span><button class="session-check" data-title="Z2 Outdoor – 90 Min. ✅" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
@@ -1127,46 +1133,46 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 160g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Progressiv</div></div><span class="session-time">9 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">11 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail">Progressiv</div></div><span class="session-time">9 Uhr</span><button class="session-check" data-title="Oberkörper" onclick="planToggle(this)"></button></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">11 Uhr</span><button class="session-check" data-title="Laufen – 30 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DI</div><div class="day-carb high">High 220g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max</div><div class="session-detail">VO2Max</div></div><span class="session-time">9 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max</div><div class="session-detail">VO2Max</div></div><span class="session-time">9 Uhr</span><button class="session-check" data-title="VO2Max" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 160g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">9 Uhr</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 75 Min.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">11 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">9 Uhr</span><button class="session-check" data-title="Ganzkörper Mix" onclick="planToggle(this)"></button></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 – 75 Min.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">11 Uhr</span><button class="session-check" data-title="Z2 – 75 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DO</div><div class="day-carb high">High 220g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">9 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">9 Uhr</span><button class="session-check" data-title="Sweet Spot" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">FR</div><div class="day-carb mid">Mid 140g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Unterkörper Kraft</div></div><span class="session-time">9 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">11:30 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Unterkörper Kraft</div></div><span class="session-time">9 Uhr</span><button class="session-check" data-title="Unterkörper" onclick="planToggle(this)"></button></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">11:30 Uhr</span><button class="session-check" data-title="Laufen – 30 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb high">High 200g</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 2–3 Std.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">morgens</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 2–3 Std.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">morgens</span><button class="session-check" data-title="Z2 Outdoor – 2–3 Std." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SO</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 35–40 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">morgens</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 35–40 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">morgens</span><button class="session-check" data-title="Laufen – 35–40 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
       </div>
@@ -1184,45 +1190,45 @@
         <div class="day-row">
           <div class="day-label"><div class="day-name">MO</div><div class="day-carb mid">Mid 160g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail"></div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Oberkörper</div><div class="session-detail"></div></div><span class="session-time">14 Uhr</span><button class="session-check" data-title="Oberkörper" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DI</div><div class="day-carb high">High 220g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max</div><div class="session-detail">VO2Max</div></div><span class="session-time">14 Uhr</span></div>
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">16:30 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">VO2Max</div><div class="session-detail">VO2Max</div></div><span class="session-time">14 Uhr</span><button class="session-check" data-title="VO2Max" onclick="planToggle(this)"></button></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">16:30 Uhr</span><button class="session-check" data-title="Laufen – 30 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">MI</div><div class="day-carb mid">Mid 160g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Ganzkörper Mix</div><div class="session-detail">Ganzkörper Kraft</div></div><span class="session-time">14 Uhr</span><button class="session-check" data-title="Ganzkörper Mix" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">DO</div><div class="day-carb high">High 220g+</div></div>
           <div class="sessions">
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Sweet Spot</div><div class="session-detail">Sweet Spot</div></div><span class="session-time">14 Uhr</span><button class="session-check" data-title="Sweet Spot" onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">FR</div><div class="day-carb low">Low 110g</div></div>
           <div class="sessions">
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">14 Uhr</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 30 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">14 Uhr</span><button class="session-check" data-title="Laufen – 30 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SA</div><div class="day-carb high">High 200g</div></div>
           <div class="sessions">
-            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Progressiv</div></div><span class="session-time">morgens</span></div>
-            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 2 Std.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span></div>
+            <div class="session gym"><span class="session-icon">🏋️</span><div class="session-info"><div class="session-title">Unterkörper</div><div class="session-detail">Progressiv</div></div><span class="session-time">morgens</span><button class="session-check" data-title="Unterkörper" onclick="planToggle(this)"></button></div>
+            <div class="session rad"><span class="session-icon">🚴</span><div class="session-info"><div class="session-title">Z2 Outdoor – 2 Std.</div><div class="session-detail">Z2 Grundlage</div></div><span class="session-time">nachmittags</span><button class="session-check" data-title="Z2 Outdoor – 2 Std." onclick="planToggle(this)"></button></div>
           </div>
         </div>
         <div class="day-row">
           <div class="day-label"><div class="day-name">SO</div><div class="day-carb low">Low 100g</div></div>
           <div class="sessions">
-            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 35 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">morgens</span></div>
+            <div class="session lauf"><span class="session-icon">🏃</span><div class="session-info"><div class="session-title">Laufen – 35 Min.</div><div class="session-detail">Z2 Laufen</div></div><span class="session-time">morgens</span><button class="session-check" data-title="Laufen – 35 Min." onclick="planToggle(this)"></button></div>
           </div>
         </div>
       </div>
@@ -1249,16 +1255,7 @@
     </ul>
   </div>
 
-  <div class="workout-detail">
-    <h4 class="lauf-col">🏃 Laufaufbau – Wochenprogressionen</h4>
-    <ul class="exercise-list">
-      <li>Phase 1 Woche 1–2 <span>Lauf/Geh 1 Min./1 Min. × 10</span></li>
-      <li>Phase 1 Woche 3–4 <span>Lauf/Geh 2 Min./1 Min. × 7</span></li>
-      <li>Phase 2 Woche 5–6 <span>20 Min. kontinuierlich Z2</span></li>
-      <li>Phase 2 Woche 7–8 <span>25–30 Min. kontinuierlich Z2</span></li>
-      <li>Phase 3 ab Woche 9 <span>30–40 Min. kontinuierlich Z2</span></li>
-    </ul>
-  </div>
+  
 
   <footer>
     Hybrid Athlet Plan · 150kg → 80kg → 🚀 · Erstellt mit Claude
@@ -1272,6 +1269,7 @@ function setPhase(phase) {
   document.querySelectorAll('.phase-content').forEach(c => c.classList.remove('active'));
   document.querySelector(`[data-phase="${phase}"]`).classList.add('active');
   document.getElementById(`phase-${phase}`).classList.add('active');
+  setTimeout(function(){ peInit(); planRestoreChecks(); }, 60);
 }
 
 function setShift(shift, phase) {
@@ -1280,7 +1278,7 @@ function setShift(shift, phase) {
   container.querySelectorAll('.shift-content').forEach(c => c.classList.remove('active'));
   container.querySelector(`[data-shift="${shift}"]`).classList.add('active');
   document.getElementById(`p${phase}-${shift}`).classList.add('active');
-  
+
   // Re-trigger animations
   const rows = document.querySelectorAll(`#p${phase}-${shift} .day-row`);
   rows.forEach(r => {
@@ -1288,24 +1286,10 @@ function setShift(shift, phase) {
     r.offsetHeight;
     r.style.animation = '';
   });
+  setTimeout(function(){ peInit(); planRestoreChecks(); }, 60);
 }
 </script>
 
-</div>
-<div id="page-week" class="page">
-  <div class="page-hdr">
-    <div class="page-title">DIESE WOCHE</div>
-    <div class="page-sub" id="week-sub">Lade...</div>
-  </div>
-  <div class="page-body">
-    <div class="stat-row">
-      <div class="stat-card"><div class="stat-lbl">Gym</div><div class="stat-val" id="ws-gym" style="color:var(--gym)">0</div><div class="stat-sub">Einheiten</div></div>
-      <div class="stat-card"><div class="stat-lbl">Rad</div><div class="stat-val" id="ws-rad" style="color:var(--rad)">0</div><div class="stat-sub">Einheiten</div></div>
-      <div class="stat-card"><div class="stat-lbl">Laufen</div><div class="stat-val" id="ws-lauf" style="color:var(--lauf)">0</div><div class="stat-sub">Einheiten</div></div>
-    </div>
-    <div id="week-days"></div>
-    <button onclick="resetWeek()" style="width:100%;padding:12px;background:none;border:0.5px solid var(--border);border-radius:12px;color:var(--muted);cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;margin-top:4px;">Woche zurücksetzen</button>
-  </div>
 </div>
 <div id="page-workout" class="page">
   <div class="page-hdr">
@@ -1401,6 +1385,7 @@ function setPhase(phase) {
   document.querySelectorAll('.phase-content').forEach(c => c.classList.remove('active'));
   document.querySelector(`[data-phase="${phase}"]`).classList.add('active');
   document.getElementById(`phase-${phase}`).classList.add('active');
+  setTimeout(function(){ peInit(); planRestoreChecks(); }, 60);
 }
 
 function setShift(shift, phase) {
@@ -1409,7 +1394,7 @@ function setShift(shift, phase) {
   container.querySelectorAll('.shift-content').forEach(c => c.classList.remove('active'));
   container.querySelector(`[data-shift="${shift}"]`).classList.add('active');
   document.getElementById(`p${phase}-${shift}`).classList.add('active');
-  
+
   // Re-trigger animations
   const rows = document.querySelectorAll(`#p${phase}-${shift} .day-row`);
   rows.forEach(r => {
@@ -1417,6 +1402,7 @@ function setShift(shift, phase) {
     r.offsetHeight;
     r.style.animation = '';
   });
+  setTimeout(function(){ peInit(); planRestoreChecks(); }, 60);
 }
 </script>
 
@@ -1531,6 +1517,7 @@ function showPage(id) {
   if (id==='workout') renderWkSelector();
   if (id==='history') renderHistory();
   if (id==='editex') renderEditList();
+  if (id==='plan') setTimeout(function(){ peInit(); planRestoreChecks(); }, 50);
 }
 
 function showToast(msg) {
@@ -2048,8 +2035,67 @@ function resetExWorkout() {
   showToast('Zurückgesetzt');
 }
 
+
+function getWeekKey() {
+  var now = new Date();
+  var mon = new Date(now);
+  mon.setDate(now.getDate() - (now.getDay()===0?6:now.getDay()-1));
+  mon.setHours(0,0,0,0);
+  return 'week_' + mon.toISOString().split('T')[0];
+}
+
+function planToggle(btn) {
+  // Find day name from nearest day-row
+  var row   = btn.closest('.day-row');
+  var dayEl = row ? row.querySelector('.day-name') : null;
+  var day   = dayEl ? dayEl.textContent.trim() : '';
+  var title = btn.getAttribute('data-title');
+  var k     = getWeekKey();
+  var done  = LS.get(k, {});
+  var key   = day + '_' + title;
+  done[key] = !done[key];
+  LS.set(k, done);
+
+  // Update visual
+  btn.classList.toggle('done', !!done[key]);
+  btn.textContent = done[key] ? '✓' : '';
+  var sess = btn.closest('.session');
+  if (sess) {
+    sess.classList.toggle('done-session', !!done[key]);
+    var titleEl = sess.querySelector('.session-title');
+    if (titleEl) titleEl.classList.toggle('done-title', !!done[key]);
+  }
+}
+
+function planRestoreChecks() {
+  var done = LS.get(getWeekKey(), {});
+  document.querySelectorAll('.session-check').forEach(function(btn) {
+    var row   = btn.closest('.day-row');
+    var dayEl = row ? row.querySelector('.day-name') : null;
+    var day   = dayEl ? dayEl.textContent.trim() : '';
+    var title = btn.getAttribute('data-title');
+    var isDone = !!done[day + '_' + title];
+    btn.classList.toggle('done', isDone);
+    btn.textContent = isDone ? '✓' : '';
+    var sess = btn.closest('.session');
+    if (sess) {
+      sess.classList.toggle('done-session', isDone);
+      var titleEl = sess.querySelector('.session-title');
+      if (titleEl) titleEl.classList.toggle('done-title', isDone);
+    }
+  });
+}
+
+function resetWeekPlan() {
+  if (!confirm('Woche zurücksetzen?')) return;
+  LS.set(getWeekKey(), {});
+  planRestoreChecks();
+  showToast('Woche zurückgesetzt');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   renderWkSelector();
+  setTimeout(function(){ peInit(); planRestoreChecks(); }, 250);
   var lastPage = LS.get('last_page', 'plan');
   var validPages = ['plan','week','workout','weight','history'];
   if (validPages.indexOf(lastPage) >= 0) {
@@ -2129,14 +2175,14 @@ var peCarb = 'm';
 
 // ── Save/Load per shift-content ────────────────────────────────────────────
 function peGetKey() {
-  var active = document.querySelector('.shift-content.active, .phase-content.active');
+  var active = document.querySelector('.shift-content.active') || document.querySelector('.phase-content.active');
   return active ? 'pe_plan_' + active.id : null;
 }
 
 function peSave() {
   var key = peGetKey();
   if (!key) return;
-  var grid = document.querySelector('.shift-content.active .week-grid, .phase-content.active .week-grid');
+  var grid = document.querySelector('.shift-content.active .week-grid') || document.querySelector('.phase-content.active .week-grid');
   if (!grid) return;
   var data = [];
   grid.querySelectorAll('.day-row').forEach(function(row) {
@@ -2174,7 +2220,7 @@ function peLoad() {
   if (!key) return;
   var data = LS.get(key, null);
   if (!data) return;
-  var grid = document.querySelector('.shift-content.active .week-grid, .phase-content.active .week-grid');
+  var grid = document.querySelector('.shift-content.active .week-grid') || document.querySelector('.phase-content.active .week-grid');
   if (!grid) return;
   var rows = grid.querySelectorAll('.day-row');
   data.forEach(function(d, i) {
@@ -2199,6 +2245,13 @@ function peLoad() {
           +(s.detail?'<div class="session-detail">'+s.detail+'</div>':'')
           +'</div>'
           +(s.time?'<span class="session-time">'+s.time+'</span>':'');
+        if (s.type !== 'ruhe') {
+          var chk = document.createElement('button');
+          chk.className = 'session-check';
+          chk.setAttribute('data-title', s.name);
+          chk.onclick = function(){ planToggle(chk); };
+          div.appendChild(chk);
+        }
         var db = document.createElement('button');
         db.className = 'pe-del-btn';
         db.textContent = '×';
@@ -2213,7 +2266,7 @@ function peLoad() {
 
 // ── Inject edit buttons ────────────────────────────────────────────────────
 function peInitButtons() {
-  var grid = document.querySelector('.shift-content.active .week-grid, .phase-content.active .week-grid');
+  var grid = document.querySelector('.shift-content.active .week-grid') || document.querySelector('.phase-content.active .week-grid');
   if (!grid) return;
   grid.querySelectorAll('.day-row').forEach(function(row) {
     var label = row.querySelector('.day-label');
@@ -2286,6 +2339,13 @@ function peAddSession(sid) {
     +'<div class="session-title" style="color:'+PE_COL[t.type]+'">'+t.name+'</div>'
     +(t.detail?'<div class="session-detail">'+t.detail+'</div>':'')
     +'</div>';
+  if (t.type !== 'ruhe') {
+    var chk = document.createElement('button');
+    chk.className = 'session-check';
+    chk.setAttribute('data-title', t.name);
+    chk.onclick = function(){ planToggle(chk); };
+    div.appendChild(chk);
+  }
   var db = document.createElement('button');
   db.className = 'pe-del-btn';
   db.textContent = '×';
@@ -2294,6 +2354,7 @@ function peAddSession(sid) {
   var cont = peDay.querySelector('.sessions');
   if (cont) cont.appendChild(div); else peDay.appendChild(div);
   peSave();
+  planRestoreChecks();
   showToast(t.name + ' hinzugefügt');
 }
 
@@ -2308,15 +2369,63 @@ function peSetCarb(cid, btn) {
   peSave();
 }
 
-// Hook into phase/shift changes
-var _origSetPhase2 = window.setPhase;
-window.setPhase = function(p) { _origSetPhase2(p); setTimeout(peInit, 200); };
-var _origSetShift2 = window.setShift;
-window.setShift = function(s, p) { _origSetShift2(s, p); setTimeout(peInit, 200); };
 
-document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(peInit, 300);
-});
+function getWeekKey() {
+  var now = new Date();
+  var mon = new Date(now);
+  mon.setDate(now.getDate() - (now.getDay()===0?6:now.getDay()-1));
+  mon.setHours(0,0,0,0);
+  return 'week_' + mon.toISOString().split('T')[0];
+}
+
+function planToggle(btn) {
+  // Find day name from nearest day-row
+  var row   = btn.closest('.day-row');
+  var dayEl = row ? row.querySelector('.day-name') : null;
+  var day   = dayEl ? dayEl.textContent.trim() : '';
+  var title = btn.getAttribute('data-title');
+  var k     = getWeekKey();
+  var done  = LS.get(k, {});
+  var key   = day + '_' + title;
+  done[key] = !done[key];
+  LS.set(k, done);
+
+  // Update visual
+  btn.classList.toggle('done', !!done[key]);
+  btn.textContent = done[key] ? '✓' : '';
+  var sess = btn.closest('.session');
+  if (sess) {
+    sess.classList.toggle('done-session', !!done[key]);
+    var titleEl = sess.querySelector('.session-title');
+    if (titleEl) titleEl.classList.toggle('done-title', !!done[key]);
+  }
+}
+
+function planRestoreChecks() {
+  var done = LS.get(getWeekKey(), {});
+  document.querySelectorAll('.session-check').forEach(function(btn) {
+    var row   = btn.closest('.day-row');
+    var dayEl = row ? row.querySelector('.day-name') : null;
+    var day   = dayEl ? dayEl.textContent.trim() : '';
+    var title = btn.getAttribute('data-title');
+    var isDone = !!done[day + '_' + title];
+    btn.classList.toggle('done', isDone);
+    btn.textContent = isDone ? '✓' : '';
+    var sess = btn.closest('.session');
+    if (sess) {
+      sess.classList.toggle('done-session', isDone);
+      var titleEl = sess.querySelector('.session-title');
+      if (titleEl) titleEl.classList.toggle('done-title', isDone);
+    }
+  });
+}
+
+function resetWeekPlan() {
+  if (!confirm('Woche zurücksetzen?')) return;
+  LS.set(getWeekKey(), {});
+  planRestoreChecks();
+  showToast('Woche zurückgesetzt');
+}
 
 </script>
 
